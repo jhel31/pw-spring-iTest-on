@@ -25,7 +25,7 @@ public class ApprovalServiceImpl implements ApprovalService {
 	@Override
 	public List<Approval> findByLevel(Integer level) throws Exception {
 		// TODO Auto-generated method stub
-		return approvalRepository.findByLevel(level);
+		return approvalRepository.findByApprovalLevel(level);
 	}
 
 }

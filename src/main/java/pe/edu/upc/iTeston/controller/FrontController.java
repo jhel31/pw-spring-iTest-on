@@ -13,4 +13,9 @@ public class FrontController {
 		return "index";
 	}
 	
+	@GetMapping("student")
+	public String student() {
+		return "student";
+	}
+	
 }

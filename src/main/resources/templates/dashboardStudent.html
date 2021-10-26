@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="frag-head">
 
+	<script async
+		src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script>
+	<script>
+	      window.dataLayer = window.dataLayer || [];
+	      function gtag(){dataLayer.push(arguments);}
+	      gtag('js', new Date());
+	      gtag('config', 'G-GNJJMF8KL8');
+	    </script>
 	<meta charset="utf-8">
 	<title>Student Dashboard iTest-on</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,37 +20,38 @@
 	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 	<link rel="icon" type="image/png" sizes="32x32" href="src\main\resources\static\Images\favicon.ico">
 
+
 </head>
 <body>
+	<div th:fragment="frag-sidebar">
+		<input type="checkbox" id="check">
+		<!--header area start-->
+		<header>
+			<label for="check"> <i class="fas fa-bars" id="sidebar_btn"></i>
+			</label>
+			<div class="left_area">
+				<h3 class="logoTopLeft">iTest-on</h3>
+			</div>
+			<div class="right_area">
+				<a href="#" class="btn btn-dark logout_btn"><i
+					class="fas fa-sign-in-alt"></i> Log-in</a>
+			</div>
+		</header>
+		<!--header area end-->
+		<!--sidebar start-->
+		<div class="sidebar">
+			<center>
+				<img src="/images/logodark.png" class="logo" alt="">
+			</center>
+			<a href="#"><i class="fas fa-desktop"></i><span>Inicio</span></a> 
+			<a href="#"><i class="fas fa-user"></i><span>Perfil</span></a> 
+			<a href="#"><i class="fas fa-cogs"></i><span>Configuraciones</span></a>
+			<a href="#"><i class="fas fa-book"></i><span>Simulacros</span></a> 
+			<a href="#"><i class="fas fa-folder"></i><span>Mis notas</span></a>
+			<a href="#"><i class="fas fa-star"></i><span>Obtener Premium</span></a>
+		</div>
 	
-	<input type="checkbox" id="check">
-	<!--header area start-->
-	<header>
-		<label for="check"> <i class="fas fa-bars" id="sidebar_btn"></i>
-		</label>
-		<div class="left_area">
-			<h3 class="logoTopLeft">iTest-on</h3>
-		</div>
-		<div class="right_area">
-			<a href="#" class="btn btn-dark logout_btn"><i
-				class="fas fa-sign-in-alt"></i> Log-in</a>
-		</div>
-	</header>
-	<!--header area end-->
-	<!--sidebar start-->
-	<div class="sidebar">
-		<center>
-			<img src="/images/logodark.png" class="logo" alt="">
-		</center>
-		<a href="#"><i class="fas fa-desktop"></i><span>Inicio</span></a> 
-		<a href="#"><i class="fas fa-user"></i><span>Perfil</span></a> 
-		<a href="#"><i class="fas fa-cogs"></i><span>Configuraciones</span></a>
-		<a href="#"><i class="fas fa-book"></i><span>Simulacros</span></a> 
-		<a href="#"><i class="fas fa-folder"></i><span>Mis notas</span></a>
-		<a href="#"><i class="fas fa-star"></i><span>Obtener Premium</span></a>
 	</div>
-
-	
 	<!--sidebar end-->
 	
 	
@@ -110,17 +119,6 @@
 	  </div>
 	</div>
 	</div>
-	
-	<footer>
-		<script async
-		src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script>
-	<script>
-	      window.dataLayer = window.dataLayer || [];
-	      function gtag(){dataLayer.push(arguments);}
-	      gtag('js', new Date());
-	      gtag('config', 'G-GNJJMF8KL8');
-	    </script>
 	<script src="@{/js/bootstrap.bundle.min.js}"></script>
-	</footer>
 </body>
 </html>

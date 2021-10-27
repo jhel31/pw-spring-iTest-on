@@ -11,10 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 @Entity
 @Table(name = "Quizzes")
 public class Quiz {
 	
+	@NotNull
+	@NotBlank
+	@Size(max = 10)
 	@Id
 	@Column(name = "id_quiz", length = 10, nullable = false)
 	private String id;

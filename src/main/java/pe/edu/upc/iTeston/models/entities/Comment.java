@@ -12,16 +12,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Comments")
 public class Comment {
-
+	
+	@NotNull
+	@NotBlank
+	@Size(max = 20)
 	@Id
-	@Column(name = "id_comment", length = 20)
+	@Column(name = "id_comment", length = 20, nullable = false)
 	private String id;
 
-	@Column(name = "description_comment", length = 1000)
+	@NotNull
+	@NotBlank
+	@Size(max = 1000)
+	@Column(name = "description_comment", length = 1000, nullable = false)
 	private String description;
 
 	@Column(name = "date_comment", nullable = false)

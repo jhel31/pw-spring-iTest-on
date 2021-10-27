@@ -9,12 +9,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Freemiums")
 public class Freemium {
+	@NotNull
+	@NotBlank
+	@Size(max = 20)
 	@Id
-	@Column(name = "id_freemium", length = 20)
+	@Column(name = "id_freemium", length = 20, nullable = false)
 	private String id;
 
 

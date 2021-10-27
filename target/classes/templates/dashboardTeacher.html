@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th ="http://www.thymeleaf.org">
-  <head th:fragment="frag-head">
+  <head th:fragment="frag-head(title)">
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GNJJMF8KL8');
-    </script>
     <meta charset="utf-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" > 
 <!-- we're including bootstrap -->
-	 <link rel="icon" type="image/png" sizes="32x32" href="src\main\resources\static\Images\favicon.ico">
-	<title >Dashboard Teacher iTest-on</title>
+	 <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon.ico">
+	<title th:replace="${title}">Dashboard Teacher Template</title>
 	 
   </head>
   <body>
@@ -45,15 +38,15 @@
     
     
 	    <div class="sidebar" >
-	      <center>
+	      <div>
 	        <img src="/images/logodark.png" class="logo" alt="Logo iTest-on">
-	      </center>
-	      <a href="#"><i class="fas fa-desktop"></i><span>Inicio</span></a>
-	      <a href="#"><i class="fas fa-user"></i><span>Perfil</span></a>
-	      <a href="#"><i class="fas fa-table"></i><span>Saldo</span></a>
-	      <a href="#"><i class="fas fa-cogs"></i><span>Configuraciones</span></a>
-	      <a href="#"><i class="fas fa-folder"></i><span>Mis Balotarios</span></a>
-	      <a href="#"><i class="fas fa-file"></i><span>Nuevo Balotario</span></a>
+	      </div>
+	      <a th:href="@{/inicio}"><i class="fas fa-desktop"></i><span>Inicio</span></a>
+	      <a th:href="@{/}"><i class="fas fa-user"></i><span>Perfil</span></a>
+	      <a th:href="@{/}"><i class="fas fa-table"></i><span>Saldo</span></a>
+	      <a th:href="@{/}"><i class="fas fa-cogs"></i><span>Configuraciones</span></a>
+	      <a th:href="@{/mis-balotarios}"><i class="fas fa-folder"></i><span>Mis Balotarios</span></a>
+	      <a th:href="@{/nuevo-balotario}"><i class="fas fa-file"></i><span>Nuevo Balotario</span></a>
 	    </div>
     </div>
     <!--sidebar end-->
@@ -63,6 +56,13 @@
     </div>
     
     <footer th:fragment="frag-footer">
+	    <script src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script>
+	    <script>
+	      window.dataLayer = window.dataLayer || [];
+	      function gtag(){dataLayer.push(arguments);}
+	      gtag('js', new Date());
+	      gtag('config', 'G-GNJJMF8KL8');
+	    </script>
 		<script src="@{/js/bootstrap.bundle.min.js}" ></script>
     </footer>
     

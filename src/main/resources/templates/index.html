@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th ="http://www.thymeleaf.org">
-  <head th:insert="dashboardTeacher :: frag-head">
+  <head th:replace="dashboardTeacher :: frag-head(~{::title})">
 
-    <title>Dashboard iTest-on</title>
+    <title>Inicio iTest-on</title>
     
   </head>
   <body>
-    <!--header area end-->
-    <!--sidebar start-->
-    <div th:insert="dashboardTeacher :: frag-sidebar">
+    
+    <div th:replace="dashboardTeacher :: frag-sidebar">
       
     </div>
-    <!--sidebar end-->
+    <!--side bar end-->
 
     <div class="content">
       <div>
         <p class="bienvenida">Bienvenido a iTest-on, puedes comenzar a repasar tus simulacros en la barra lateral</p>
       </div>
     </div>
-<script src="@{/js/bootstrap.bundle.min.js}" ></script>
+	<footer th:replace="dashboardTeacher :: frag-footer"></footer>
   </body>
 </html>

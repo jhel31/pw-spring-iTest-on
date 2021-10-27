@@ -1,24 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="frag-head">
+<head th:fragment="frag-head(title)">
 
-	<script async
-		src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script>
-	<script>
-	      window.dataLayer = window.dataLayer || [];
-	      function gtag(){dataLayer.push(arguments);}
-	      gtag('js', new Date());
-	      gtag('config', 'G-GNJJMF8KL8');
-	    </script>
 	<meta charset="utf-8">
-	<title>Student Dashboard iTest-on</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap"	rel="stylesheet">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-	<link rel="icon" type="image/png" sizes="32x32" href="src\main\resources\static\Images\favicon.ico">
+	<link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon.ico">
+	<title th:replace="${title}">Dashboard Student Template</title>
 
 
 </head>
@@ -43,12 +35,12 @@
 			<center>
 				<img src="/images/logodark.png" class="logo" alt="">
 			</center>
-			<a href="#"><i class="fas fa-desktop"></i><span>Inicio</span></a> 
-			<a href="#"><i class="fas fa-user"></i><span>Perfil</span></a> 
-			<a href="#"><i class="fas fa-cogs"></i><span>Configuraciones</span></a>
-			<a href="#"><i class="fas fa-book"></i><span>Simulacros</span></a> 
-			<a href="#"><i class="fas fa-folder"></i><span>Mis notas</span></a>
-			<a href="#"><i class="fas fa-star"></i><span>Obtener Premium</span></a>
+			<a th:href="@{/inicio}"><i class="fas fa-desktop"></i><span>Inicio</span></a> 
+			<a th:href="@{/}"><i class="fas fa-user"></i><span>Perfil</span></a> 
+			<a th:href="@{/}"><i class="fas fa-cogs"></i><span>Configuraciones</span></a>
+			<a th:href="@{/elegir}"><i class="fas fa-book"></i><span>Simulacros</span></a> 
+			<a th:href="@{/}"><i class="fas fa-folder"></i><span>Mis notas</span></a>
+			<a th:href="@{/}"><i class="fas fa-star"></i><span>Obtener Premium</span></a>
 		</div>
 	
 	</div>
@@ -57,68 +49,19 @@
 	
 	
 	<div class="content">
-	<div class="row">
-	  <div class="col-sm-8" style=" margin-top: 5rem;">
-	    <div class="card" >
-	      <div class="card-body">
-	        <h5 class="card-title">BALOTARIO</h5>
-	        <p class="card-text">Aca es donde estarán los balotarios, al menos así lo imagino, pero si tienen otra idea igual les escucho.
-	        @Andrea acá debemos trabajar juntos -Renzo</p>
-	        <a href="#" class="btn btn-primary">Es responsive :D</a>
-	        
-	        <div class="card border-dark mb-3" style="margin-top: 1.5rem;">
-			  <div class="card-header">Tema</div>
-			  <div class="card-body text-dark">
-			    <h5 class="card-title">Pregunta 1</h5>
-			    <p class="card-text">Creo que así está saliendo mejor :D</p>
-			    
-    	        	<div>
-			        <div class="form-check">
-					  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-					  <label class="form-check-label" for="exampleRadios1">
-					    Default radio
-					  </label>
-					</div>
-					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-					  <label class="form-check-label" for="exampleRadios2">
-					    Second default radio
-					  </label>
-					</div>
-					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-					  <label class="form-check-label" for="exampleRadios3">
-					    Disabled radio
-					  </label>
-					</div>
-			        </div>
-			    
-			  </div>
-			</div>
-	        
-
-	        
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-sm-4"style=" margin-top: 5rem;">
-	    <div class="card text-dark bg-light mb-3">
-	      <div class="card-body">
-	        <h5 class="card-title">Puntuación del balotario</h5>
-	        <p class="card-text">¿Cómo puntuarias a este balotario en función a si es entendible, bien redactado, o bien planteado?</p>
-	        <a href="#" class="btn btn-danger">1</a>
-	        <a href="#" class="btn btn-warning">2</a>
-	        <a href="#" class="btn btn-warning">3</a>
-	        <a href="#" class="btn btn-success">4</a>
-	        <a href="#" class="btn btn-success">5</a>
-	        <p style= "margin-top: 1rem;"><a href="#" class="btn btn-primary">Confirmar</a></p>
-	        
-	        
-	      </div>
-	    </div>
-	  </div>
+	
 	</div>
-	</div>
+	
+	<footer th:fragment="frag-footer">
+	<script async
+		src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script>
+	<script>
+	      window.dataLayer = window.dataLayer || [];
+	      function gtag(){dataLayer.push(arguments);}
+	      gtag('js', new Date());
+	      gtag('config', 'G-GNJJMF8KL8');
+	    </script>
 	<script src="@{/js/bootstrap.bundle.min.js}"></script>
+	</footer>
 </body>
 </html>

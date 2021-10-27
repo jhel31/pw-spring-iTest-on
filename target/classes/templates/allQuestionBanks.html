@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th ="http://www.thymeleaf.org">
+  <head th:replace="dashboardTeacher :: frag-head(~{::title})">
+
+    <title>Mis Balotarios</title>
+    
+  </head>
+  <body>
+    
+    <div th:replace="dashboardTeacher :: frag-sidebar">
+      
+    </div>
+    <!--side bar end-->
+
+    <div class="content">
+      <div class="container">
+      	<div class="row">
+			<div class="card" style=" margin-top: 5rem;">
+				<h1>Mis Balotarios</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="card">
+			  <h5 class="card-header">Todos tus balotarios</h5>
+			  <div class="card-body table-responsive">
+			    <table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">Id</th>
+				      <th scope="col">Atributo 1</th>
+				      <th scope="col">Atributo 2</th>
+				      <th scope="col">Atributo 3</th>
+				      <th scope="col">Atributo 4</th>
+				      
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">1</th>
+				      <td>Ejemplo ID</td>
+				      <td>Ejemplo N</td>
+				      <td>Ejemplo U</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">2</th>
+				      <td>Jacob</td>
+				      <td>Thornton</td>
+				      <td>@fat</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">3</th>
+				      <td colspan="2">Larry the Bird</td>
+				      <td>@twitter</td>
+				    </tr>
+				  </tbody>
+				</table>
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+				  </ul>
+				</nav>
+			  </div>
+			</div>
+		</div>
+		
+      </div>
+    </div>
+	<footer th:replace="dashboardTeacher :: frag-footer"></footer>
+  </body>
+</html>

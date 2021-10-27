@@ -13,9 +13,23 @@ public class FrontController {
 		return "index";
 	}
 	
-	@GetMapping("student")
-	public String student() {
-		return "student";
+	@GetMapping("simulacro")
+	public String quizz() {
+		return "quizz";
 	}
 	
+	@GetMapping("nuevo-balotario")
+	public String newQuestionBank() {
+		return "newQuestionBank";
+	}
+	
+	@GetMapping("mis-balotarios")
+	public String allQuestionBanks() {
+		return "allQuestionBanks";
+	}
+	
+	@GetMapping("elegir")
+	public String beforeQuizz() {
+		return "beforeQuizz";
+	}
 }

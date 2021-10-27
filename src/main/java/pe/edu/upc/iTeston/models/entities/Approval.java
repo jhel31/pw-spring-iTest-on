@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,6 +28,11 @@ public class Approval {
 	@Column(name = "id_approval", length = 20, nullable = false)
 	private String id;
 
+	@Max(value = 5)
+	@Min(value = 0)
+	@Column(name = "level_approval")
+	private Integer approvalLevel;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_student", nullable = true)
 	private Student student;
@@ -33,9 +40,6 @@ public class Approval {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_question_bank", nullable = true)
 	private QuestionBank questionBank;
-
-	@Column(name = "level_approval")
-	private Integer approvalLevel;
 
 	@Column(name = "date_approval")
 	@Temporal(TemporalType.DATE)

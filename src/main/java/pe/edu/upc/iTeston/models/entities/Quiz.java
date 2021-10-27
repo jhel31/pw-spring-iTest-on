@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,7 +26,9 @@ public class Quiz {
 	@Id
 	@Column(name = "id_quiz", length = 10, nullable = false)
 	private String id;
-
+	
+	@Max(value = 100)
+	@Min(value = 0)
 	@Column(name = "nota_quiz")
 	private Integer nota;
 

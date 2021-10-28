@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="frag-head(title)">
+
+	<meta charset="utf-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap"	rel="stylesheet">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon.ico">
+	<title th:replace="${title}">Dashboard Student Template</title>
+
+
+</head>
+<body>
+	<div th:fragment="frag-sidebar">
+		<input type="checkbox" id="check">
+		<!--header area start-->
+		<header>
+			<label for="check"> <i class="fas fa-bars" id="sidebar_btn"></i>
+			</label>
+			<div class="left_area">
+				<h3 class="logoTopLeft">iTest-on</h3>
+			</div>
+			<div class="right_area">
+				<a href="#" class="btn btn-dark logout_btn"><i
+					class="fas fa-sign-in-alt"></i> Log-in</a>
+			</div>
+		</header>
+		<!--header area end-->
+		<!--sidebar start-->
+		<div class="sidebar">
+			<center>
+				<img src="/images/logodark.png" class="logo" alt="">
+			</center>
+			<a th:href="@{/inicio-estudiante}"><i class="fas fa-desktop"></i><span>Inicio</span></a> 
+			<a th:href="@{/inicio-estudiante}"><i class="fas fa-user"></i><span>Perfil</span></a> 
+			<a th:href="@{/elegir}"><i class="fas fa-book"></i><span>Simulacros</span></a> 
+			<a th:href="@{/inicio-estudiante}"><i class="fas fa-folder"></i><span>Mis notas</span></a>
+			<a th:href="@{/inicio-estudiante}"><i class="fas fa-star"></i><span>Obtener Premium</span></a>
+		</div>
+	
+	</div>
+	<!--sidebar end-->
+	
+	
+	
+	<div class="content">
+	
+	</div>
+	
+	<footer th:fragment="frag-footer">
+	<script async
+		src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script>
+	<script>
+	      window.dataLayer = window.dataLayer || [];
+	      function gtag(){dataLayer.push(arguments);}
+	      gtag('js', new Date());
+	      gtag('config', 'G-GNJJMF8KL8');
+	    </script>
+	<script src="@{/js/bootstrap.bundle.min.js}"></script>
+	</footer>
+</body>
+</html>

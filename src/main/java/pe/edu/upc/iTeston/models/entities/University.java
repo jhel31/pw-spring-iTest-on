@@ -10,17 +10,25 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity 
 @Table(name = "Universities", 
        indexes = { @Index(columnList = "name_university", name = "Universities_index_name_university")})
 public class University {
 
+	@NotNull
+	@NotBlank
+	@Size(max = 10)
 	@Id
 	@Column(name = "id_university", length = 10, nullable = false)
 	private String id;
 
-
+	@NotNull
+	@NotBlank
+	@Size(max = 50)
 	@Column(name = "name_university", length = 50, nullable = false)
 	private String name;
 	

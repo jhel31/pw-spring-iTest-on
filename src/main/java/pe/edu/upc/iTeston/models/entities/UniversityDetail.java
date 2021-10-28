@@ -8,10 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "University_Details")
 public class UniversityDetail {
+	@NotNull
+	@NotBlank
+	@Size(max = 9)
 	@Id
 	@Column(name = "id_university_details", length = 9, nullable = false)
 	private String id;

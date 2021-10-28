@@ -1,15 +1,16 @@
 server:
-  port: 8104 
+  port: 10011 
 spring:
   datasource:
     driver-class-name:  org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/DBiTest-on
+    
     username: postgres
     password: 9oe4qvf9
   jpa:
     database: postgresql
     hibernate:
-      ddl-auto: update
+      ddl-auto: drop-and-create
     show-sql: true
     properties:
       hibernate:

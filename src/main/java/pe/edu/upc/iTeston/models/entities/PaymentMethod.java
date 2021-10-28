@@ -33,6 +33,8 @@ public class PaymentMethod {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
+	@OneToMany(mappedBy = "paymentMethod", fetch = FetchType.LAZY)
+	private List<Subscription> subscriptions;
 	public PaymentMethod(String id, int numberCard, int codeCard, Date date, List<Subscription> subscriptions) {
 		super();
 		this.id = id;
@@ -87,8 +89,6 @@ public class PaymentMethod {
 		this.subscriptions = subscriptions;
 	}
 
-	@OneToMany(mappedBy = "paymentMethod", fetch = FetchType.LAZY)
-	private List<Subscription> subscriptions;
 
 	@Override
 	public int hashCode() {

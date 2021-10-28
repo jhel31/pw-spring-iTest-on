@@ -10,16 +10,23 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Careers", indexes = { @Index(columnList = "name_career", name = "careers_index_name_career") })
 
 public class Career {
-
+	@NotNull
+	@NotBlank
+	@Size(max = 10)
 	@Id
 	@Column(name = "id_career", length = 10, nullable = false)
 	private String id;
-
+	@NotNull
+	@NotBlank
+	@Size(max = 60)
 	@Column(name = "name_career", length = 60)
 	private String name;
 

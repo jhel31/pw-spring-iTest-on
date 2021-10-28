@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th ="http://www.thymeleaf.org">
+  <head th:replace="dashboardTeacher :: frag-head(~{::title})">
+
+    <title>Nuevo Balotario</title>
+    
+  </head>
+  <body>
+    
+    <div th:replace="dashboardTeacher :: frag-sidebar">
+      
+    </div>
+    <!--side bar end-->
+
+    <div class="content">
+      <div class="container">
+      	<div class="row">
+			<div class="card" style=" margin-top: 5rem;">
+				<h1>Nuevo Balotario</h1>
+			</div>
+		</div>
+		
+		<!-- Aca ira otro row donde veremos si ponemos lo de universidad y carrera -->
+		
+		<div class="row">
+			<div class="card">
+			  <h5 class="card-header">Ingresa las preguntas</h5>
+			  <div class="card-body">
+			    <div class="mb-3">
+				  <label for="exampleFormControlInput1" class="form-label">Enunciado de pregunta</label>
+				  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				</div>
+				
+				<div class="container">
+					<div class="row">
+					    <div class="col">
+					    	<div class="mb-3">
+							  <label for="formControlInput" class="form-label">Respuesta Correcta</label>
+							  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+					    </div>
+					    <div class="col">
+					    	<div class="mb-3">
+							  <label for="formControlInput" class="form-label">Respuesta Incorrecta1</label>
+							  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+					    </div>
+					    <div class="col">
+					    	<div class="mb-3">
+							  <label for="formControlInput" class="form-label">Respuesta Incorrecta2</label>
+							  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+					    </div>
+					    <div class="col">
+					    	<div class="mb-3">
+							  <label for="formControlInput" class="form-label">Respuesta Incorrecta3</label>
+							  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+					    </div>
+					    <div class="col">
+					    	<div class="mb-3">
+							  <label for="formControlInput" class="form-label">Respuesta Incorrecta4</label>
+							  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+					    </div>
+					</div>
+				</div>
+				
+				
+			  </div>
+			</div>
+		</div>
+		 
+		
+      </div>
+    </div>
+	<footer th:replace="dashboardTeacher :: frag-footer"></footer>
+  </body>
+</html>

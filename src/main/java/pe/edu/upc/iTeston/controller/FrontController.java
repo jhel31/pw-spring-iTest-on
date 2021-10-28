@@ -32,5 +32,10 @@ public class FrontController {
 	public String beforeQuizz() {
 		return "beforeQuizz";
 	}
+	
+	@GetMapping("inicio-estudiante")
+	public String landingEstudiante() {
+		return "landingEstudiante";
+	}
 
 }

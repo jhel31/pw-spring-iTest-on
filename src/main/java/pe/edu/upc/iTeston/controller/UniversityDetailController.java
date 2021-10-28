@@ -76,7 +76,7 @@ public class UniversityDetailController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "countries/view";
+		return "UniversitiesDetails/savenew";
 	}
 	
 }

@@ -4,42 +4,71 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Exercises")
 public class Exercise {
+	@NotBlank
+	@Size(max = 10)
 	@Id
 	@Column(name = "id_exercise", length = 10, nullable = false)
 	private String id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@NotNull
+	@ManyToOne
 	@JoinColumn(name = "id_question_bank", nullable = false)
 	private QuestionBank questionBank;
 
-	@Column(name = "statement_exercise", length = 1000)
+	@NotNull
+	@NotBlank
+	@Size(max = 1000)
+	@Column(name = "statement_exercise", length = 1000, nullable = false)
 	private String statement;
 
-	@Column(name = "score_exercise")
+	@NotNull
+	@NotBlank
+	@Max(value = 9999)
+	@Min(value = 1)
+	@Column(name = "score_exercise", nullable = false)
 	private Integer score;
 
-	@Column(name = "correct_alternative", length = 500)
+	@NotNull
+	@NotBlank
+	@Size(max = 500)
+	@Column(name = "correct_alternative", length = 500, nullable = false)
 	private String correctAlternative;
 
-	@Column(name = "wrong_alternative_1", length = 500)
+	@NotNull
+	@NotBlank
+	@Size(max = 500)
+	@Column(name = "wrong_alternative_1", length = 500, nullable = false)
 	private String wrongAlternative1;
 
-	@Column(name = "wrong_alternative_2", length = 500)
+	@NotNull
+	@NotBlank
+	@Size(max = 500)
+	@Column(name = "wrong_alternative_2", length = 500, nullable = false)
 	private String wrongAlternative2;
 
-	@Column(name = "wrong_alternative_3", length = 500)
+	@NotNull
+	@NotBlank
+	@Size(max = 500)
+	@Column(name = "wrong_alternative_3", length = 500, nullable = false)
 	private String wrongAlternative3;
 
-	@Column(name = "wrong_alternative_4", length = 500)
+	@NotNull
+	@NotBlank
+	@Size(max = 500)
+	@Column(name = "wrong_alternative_4", length = 500, nullable = false)
 	private String wrongAlternative4;
 
 	public Exercise() {

@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity 
 @Table(name = "subscriptions")
@@ -25,10 +26,12 @@ public class Subscription {
 	@Column(name = "expire_subcription", length = 40, nullable = false)
 	private Date expire;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_paymentMethods")
 	private PaymentMethod paymentMethod;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_student", nullable = false)
 	private Student student;

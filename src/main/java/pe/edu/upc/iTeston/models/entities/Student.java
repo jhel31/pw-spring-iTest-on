@@ -11,27 +11,45 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Students")
 public class Student {
 
-	@Id
+	@NotBlank
+	@Id 
 	@Column(name = "id_student", length = 20, nullable = false)
 	private String id;
 
-	@Column(name = "name_student", length = 100)
+	@NotNull
+	@NotBlank //garantiza tamaño de name no sea mayor de 30
+	@Size (max=30)
+	@Column(name = "name_student", length = 30)//validacion para bd
 	private String name;
 
+	@NotNull
+	@NotBlank 
+	@Size (max=100)
 	@Column(name = "lastname_student", length = 100)
 	private String lastname;
 
+	
+	@NotNull
+	@NotBlank 
+	@Size (max=40)
 	@Column(name = "email_student", length = 40)
 	private String email;
 
+	@NotNull
+	@NotBlank 
+	@Size (max=30)
 	@Column(name = "password_student", length = 30)
 	private String password;
 
+	
 	@ManyToOne
 	@JoinColumn(name = "id_freemium", nullable = false)
 	private Freemium freemium;

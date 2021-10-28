@@ -18,6 +18,7 @@ public class FrontController {
 		return "quizz";
 	}
 	
+
 	@GetMapping("nuevo-balotario")
 	public String newQuestionBank() {
 		return "newQuestionBank";
@@ -32,4 +33,5 @@ public class FrontController {
 	public String beforeQuizz() {
 		return "beforeQuizz";
 	}
+
 }

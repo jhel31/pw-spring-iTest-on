@@ -41,8 +41,8 @@ public class UniversityDetailController {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		return "UniversitiesDetails/list";
+		}	
+		return "universitiesDetails/list";
 	}
 	
 	
@@ -76,7 +76,7 @@ public class UniversityDetailController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "countries/view";
+		return "UniversitiesDetails/savenew";
 	}
 	
 }

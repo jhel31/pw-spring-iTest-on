@@ -17,7 +17,6 @@ public class FrontController {
 	public String quizz() {
 		return "quizz";
 	}
-	
 
 	@GetMapping("nuevo-balotario")
 	public String newQuestionBank() {

@@ -6,7 +6,6 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,29 +13,43 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Question_Banks")
 public class QuestionBank {
+	@NotBlank
+	@Size(max = 8)
 	@Id
 	@Column(name = "id_question_bank", length = 8, nullable = false)
 	private String id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@NotNull
+	@ManyToOne
 	@JoinColumn(name = "id_quiz", nullable = false)
 	private Quiz quiz;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@NotNull
+	@ManyToOne
 	@JoinColumn(name = "id_teacher", nullable = false)
 	private Teacher teacher;
 
+	@Size(max = 100)
 	@Column(name = "description", length = 100)
 	private String description;
 
-	@Column(name = "results")
+	@Max(value = 9999)
+	@Min(value = 1)
+	@Column(name = "results", nullable = false)
 	private Integer results;
 
-	@Column(name = "creation_date")
+	@NotNull
+	@NotBlank
+	@Column(name = "creation_date",nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date creationDate;
 

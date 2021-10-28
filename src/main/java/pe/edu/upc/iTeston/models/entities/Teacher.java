@@ -12,26 +12,45 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Teachers")
 public class Teacher {
+	@NotNull
+	@NotBlank
+	@Size(max = 10)
 	@Id
 	@Column(name = "id_teacher", length = 10, nullable = false)
 	private String id;
-
+	
+	@NotNull
+	@NotBlank
+	@Size(max = 30)
 	@Column(name = "name_teacher", length = 30, nullable = false)
 	private String name;
-
+	
+	@NotNull
+	@NotBlank
+	@Size(max = 30)
 	@Column(name = "lastname_teacher", length = 30, nullable = false)
 	private String lastname;
-
+	
+	@NotNull
+	@NotBlank
+	@Size(max = 100)
 	@Column(name = "email_teacher", length = 100, nullable = false)
 	private String email;
-
+	
+	@NotNull
+	@NotBlank
+	@Size(max = 30)
 	@Column(name = "password", length = 30, nullable = false)
 	private String password;
 
+	@NotNull
 	@Column(name = "document_experience", length = 30, nullable = false)
 	private Boolean documentExperience;
 

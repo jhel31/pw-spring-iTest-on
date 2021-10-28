@@ -9,16 +9,25 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Courses")
 
 public class Course {
 
+	@NotNull
+	@NotBlank
+	@Size(max = 10)
 	@Id
 	@Column(name = "id_course", length = 10, nullable = false)
 	private String id;
 
+	@NotNull
+	@NotBlank
+	@Size(max = 30)
 	@Column(name = "name_course", length = 30, nullable = false)
 	private String name;
 

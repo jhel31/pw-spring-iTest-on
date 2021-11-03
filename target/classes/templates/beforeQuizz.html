@@ -48,19 +48,20 @@
 				
 				
 			</div>
-			
-			<div class="row" style="padding: 1rem;">
-				<h2>Carrera</h2>
-				<div class="card">
-				    <p class="card-text">Selecciona la carrera a la que quieres postular para darte un simulacro des acuerdo a la necesidad</p>
-					<select class="form-select" aria-label="Default select example">
-					  <option selected>Selecciona</option>
-					  <option value="1">Carrera 1</option>
-					  <option value="2">Carrera 2</option>
-					  <option value="3">Carrera 3</option>
-					</select>
-				</div>				
-			</div>
+			<form th:object="${career}">
+				<div class="row" style="padding: 1rem;">
+					<h2>Carrera</h2>
+					<div class="card">
+					    <p class="card-text">Selecciona la carrera a la que quieres postular para darte un simulacro des acuerdo a la necesidad</p>
+						<select class="form-select" th:field="*{id}" aria-label="Default select example">
+							<option th:each="career: ${careers}" th:value="${career.id}"
+								th:text="${career.name}"
+								th:selected="(${career.id} == *{id})">
+							</option>
+						</select>
+					</div>				
+				</div>
+			</form>
 			
 			<div class="row">
 				<div class="card text-end" >

@@ -24,6 +24,7 @@ public class CareerController {
 		try {
 			List<Career> careers = careerService.getAll();
 			model.addAttribute("careers", careers);
+			model.addAttribute("career", new Career());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

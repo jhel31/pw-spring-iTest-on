@@ -38,4 +38,12 @@ public class FrontController {
 		return "landingEstudiante";
 	}
 
+	@GetMapping("misnotas")
+	public String notaQuizz() {
+		return "notaQuizz";
+	}
+	@GetMapping("premium")
+	public String planPremium() {
+		return "planPremium";
+	}
 }

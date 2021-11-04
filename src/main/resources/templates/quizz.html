@@ -26,35 +26,44 @@
 		<div class="row">
 			
 		  <div class="col-sm-8">
+		  <!-- a partir de ac� es de donde se debe de repetir el balotario constantemente -->
 		    <div class="card" >
 		      <div class="card-body">
 		        <h5 class="card-title">BALOTARIO</h5>
-		        <p class="card-text">Curso razonamiento verbal</p>
-		 
+
+		        <p class="card-text">Este texto sera el atributo description de balotario</p>
+
 		        
+		        <!-- estas ser�n las preguntas que se repetiran -->
 		        <div class="card border-dark mb-3" style="margin-top: 1.5rem;">
-				  <div class="card-header">RV-Gramatica</div>
+
+				  <div class="card-header">atributo exercise.teacher.course (creo)</div>
 				  <div class="card-body text-dark">
 				    <h5 class="card-title">Pregunta 1</h5>
-				    <p class="card-text">Cual de las siguientes opciones esta bien escrito</p>
+				    <p class="card-text">atributo statement_exercise</p>
+
 				    
 	    	        	<div>
 				        <div class="form-check">
-						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
 						  <label class="form-check-label" for="exampleRadios1">
-						    vaca
+
+						    1ra opcion
+
 						  </label>
 						</div>
 						<div class="form-check">
 						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
 						  <label class="form-check-label" for="exampleRadios2">
-						    baca
+
+						    2da opcion
 						  </label>
 						</div>
 						<div class="form-check">
-						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
+						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
 						  <label class="form-check-label" for="exampleRadios3">
-						   vuaca
+						    3ra opcion
+
 						  </label>
 						</div>
 				        </div>
@@ -66,7 +75,10 @@
 		      </div>
 		    </div>
 		  </div>
+		  
 		  <div class="col-sm-4">
+		  
+		  <!-- esta es parte de puntuaci�n que debe repetirse -->
 		    <div class="card text-dark bg-light mb-3">
 		      <div class="card-body">
 		        <h5 class="card-title">Puntuacion del balotario</h5>
@@ -80,7 +92,25 @@
 		      </div>
 		      
 		    </div>
+		    
+		    <!-- estos son los comentarios, imagino que ser�n simples -->
+		    <div class="card text-dark bg-light mb-3">
+		      <div class="card-body">
+		        <input type="text" class="form-control" placeholder="Duda? Envia un comentario" aria-describedby="button-addon-comment">
+ 				<button class="btn btn-outline-secondary" type="button" id="button-addon-comment">Enviar</button>
+		      </div>
+		    </div>		    
+		    
+		    
+		    
+		    
+		    
 		  </div>
+		</div>
+		<div class="row">
+		<div class="d-grid gap-2 col-6 mx-auto">
+			<a th:href="@{/misnotas}" class="btn btn-primary">Terminar simulacro</a>
+		</div>
 		</div>
 	</div>
 	

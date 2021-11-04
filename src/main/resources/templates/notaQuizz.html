@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th ="http://www.thymeleaf.org">
+  <head th:replace="dashboardStudent :: frag-head(~{::title})">
+
+    <title>Tus notas</title>
+    
+  </head>
+  <body>
+    
+    <div th:replace="dashboardStudent :: frag-sidebar">
+      
+    </div>
+    <!--side bar end-->
+
+    <div class="content">
+      <div class="container">
+      	<div class="row">
+			<div class="card" style=" margin-top: 5rem;">
+				<h1>Tus notas</h1>
+			</div>
+		</div>
+		
+		<!-- -->
+		
+		<div class="row">
+			<div class="card">
+			  <h5 class="card-header">Resultado de simulacros pasados</h5>
+			  <div class="card-body">
+			  <p>Aca encontraras las notas de tu simulacro</p>
+			  <p>Hay algo que acabo de descubrir, como mostraremos las notas? seran todas las notas? tambien tendra las preguntas y respuestas correctas?
+			  podremos terminarlo a tiempo?</p>
+				
+			  </div>
+			</div>
+		</div>
+		 
+		
+      </div>
+    </div>
+	<footer th:replace="dashboardStudent  :: frag-footer"></footer>
+  </body>
+</html>

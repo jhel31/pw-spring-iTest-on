@@ -46,4 +46,23 @@ public class FrontController {
 	public String planPremium() {
 		return "planPremium";
 	}
+	
+	@GetMapping("pago")
+	public String creditCard() {
+		return "creditCard";
+	}
+	
+	@GetMapping("saldo")
+	public String virtualWallet() {
+		return "virtualWallet";
+	}
+	@GetMapping("perfil-docente")
+	public String teacherProfile() {
+		return "teacherProfile";
+	}
+	
+	@GetMapping("perfil-estudiante")
+	public String studentProfile() {
+		return "studentProfile";
+	}
 }

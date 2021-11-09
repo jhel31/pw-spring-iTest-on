@@ -20,7 +20,7 @@ public class QuizController {
 	@Autowired
 	private QuizService quizService; 
 	
-	@GetMapping("Misnotas")
+	@GetMapping("misnotas")
 	public String list(Model model) {
 		try {
 			List<Quiz> quizes = quizService.getAll();
@@ -29,6 +29,11 @@ public class QuizController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return "quizzes/list";
+		return "quizzes/myScores";
+	}
+	
+	@GetMapping("simulacro")
+	public String simulacro() {
+		return "quizzes/showQuizz";
 	}
 }

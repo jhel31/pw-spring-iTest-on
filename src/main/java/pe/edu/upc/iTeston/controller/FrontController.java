@@ -15,10 +15,7 @@ public class FrontController {
 	public String landingTeacher() {
 		return "landingTeacher";
 	}
-	@GetMapping("simulacro")
-	public String simulacro() {
-		return "quizzes/quizz";
-	}
+	
 	@GetMapping("nuevo-balotario")
 	public String newQuestionBank() { // quitar
 		return "newQuestionBank";

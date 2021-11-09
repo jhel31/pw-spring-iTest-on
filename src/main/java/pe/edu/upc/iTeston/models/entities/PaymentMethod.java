@@ -13,16 +13,34 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "PaymentMethods")
 
 public class PaymentMethod {
 
+	@NotNull(message = "El correo debe contener valor")
+	@NotBlank(message = "El correo debe contener datos") 
+	@Size(max = 10, message = "El tamaño máximo del nombre es 10")
 	@Id
 	@Column(name = "id_paymentMethods", length = 10, nullable = false)
 	private String id;
-
+	
+	@NotNull(message = "El correo debe contener valor")
+	@NotBlank(message = "El correo debe contener datos") 
+	@Size(max = 30, message = "El tamaño máximo del nombre es 30")
+	@Column(name = "email_paymenthods", length = 30, nullable = false)
+	private String email;
+	
+	@NotNull(message = "El nombre de la tarjeta debe contener valor")
+	@NotBlank(message = "El nombre de la tarjeta debe contener datos") 
+	@Size(max = 30, message = "El tamaño máximo del nombre es 30")
+	@Column(name = "nameCard_paymenthods", length = 30, nullable = false)
+	private String nameCard;
+	
 	@Transient
 	private int numberCard;
 

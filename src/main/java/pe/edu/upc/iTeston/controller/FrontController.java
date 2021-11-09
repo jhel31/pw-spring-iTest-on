@@ -31,7 +31,6 @@ public class FrontController {
 		return "landingEstudiante";
 	}
 
-
 	@GetMapping("premium")
 	public String planPremium() { // quitar
 		return "planPremium";

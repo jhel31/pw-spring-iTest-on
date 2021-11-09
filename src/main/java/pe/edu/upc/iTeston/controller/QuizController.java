@@ -32,8 +32,15 @@ public class QuizController {
 		return "quizzes/myScores";
 	}
 	
-	@GetMapping("simulacro")
-	public String simulacro() {
+	@GetMapping("mostrarsimulacro")
+	public String mostrarsimulacro() { //name of method is for html part
+		
 		return "quizzes/showQuizz";
 	}
+	
+//	@GetMapping("mostrarsimulacro")
+//	public String mostrarsimulacro() {
+//		
+//		return "quizzes/showQuizz";
+//	}
 }

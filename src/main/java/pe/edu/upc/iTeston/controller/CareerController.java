@@ -20,7 +20,7 @@ public class CareerController {
 	private CareerService careerService;
 	
 	@GetMapping("simulacro")
-	public String list(Model model) {
+	public String listCareers(Model model) {
 		try {
 			List<Career> careers = careerService.getAll();
 			model.addAttribute("careers", careers);

@@ -4,4 +4,7 @@ import pe.edu.upc.iTeston.models.entities.Student;
 
 public interface StudentService extends CrudService<Student, String>{
 
+	//@Autowired
+	
+	
 }

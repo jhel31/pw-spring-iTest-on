@@ -15,41 +15,39 @@ public class FrontController {
 	public String landingTeacher() {
 		return "landingTeacher";
 	}
-	
 	@GetMapping("simulacro")
-	public String quizz() {
-		return "quizz";
+	public String simulacro() {
+		return "quizzes/quizz";
 	}
-
 	@GetMapping("nuevo-balotario")
-	public String newQuestionBank() {
+	public String newQuestionBank() { // quitar
 		return "newQuestionBank";
 	}
 	
 	@GetMapping("mis-balotarios")
-	public String allQuestionBanks() {
+	public String allQuestionBanks() { // quitar
 		return "allQuestionBanks";
 	}
 	
 	@GetMapping("inicio-estudiante")
-	public String landingEstudiante() {
+	public String landingEstudiante() { 
 		return "landingEstudiante";
 	}
 
 
 	@GetMapping("premium")
-	public String planPremium() {
+	public String planPremium() { // quitar
 		return "planPremium";
 	}
 	
 	@GetMapping("pago")
-	public String creditCard() {
+	public String creditCard() { // quitar
 		return "creditCard";
 	}
 	
 	@GetMapping("saldo")
-	public String virtualWallet() {
-		return "virtualWallet";
+	public String virtualWallet() { // quitar
+		return "virtualWallet"; 
 	}
 	@GetMapping("perfil-docente")
 	public String teacherProfile() {

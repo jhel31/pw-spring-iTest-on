@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.iTeston.business.crud.CareerService;
+import pe.edu.upc.iTeston.business.crud.QuizService;
 import pe.edu.upc.iTeston.models.entities.Career;
+import pe.edu.upc.iTeston.models.entities.Quiz;
 
 @Controller
 @RequestMapping("/")
@@ -17,7 +19,8 @@ public class FrontController {
 	
 	@Autowired
 	private CareerService careerService;
-
+	@Autowired
+	private QuizService quizService;
 	@GetMapping("inicio-docente")	// request
 	public String landingTeacher() {
 		return "landingTeacher";
@@ -52,7 +55,9 @@ public class FrontController {
 	}
 
 	@GetMapping("misnotas")
-	public String notaQuizz() {
+	public String notaQuizz(Model model) throws Exception {
+			List<Quiz> quizes = quizService.getAll();
+			model.addAttribute("quizes", quizes);
 		return "notaQuizz";
 	}
 	@GetMapping("premium")

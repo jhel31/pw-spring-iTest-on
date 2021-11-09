@@ -13,9 +13,9 @@ import pe.edu.upc.iTeston.business.crud.QuizService;
 import pe.edu.upc.iTeston.models.entities.Quiz;
 
 @Controller
-@RequestMapping("/quizes")
+@RequestMapping("/")
 @SessionAttributes("quiz")
-public class QuizController {
+public class MyScoreController {
 	
 	@Autowired
 	private QuizService quizService; 
@@ -24,11 +24,11 @@ public class QuizController {
 	public String list(Model model) {
 		try {
 			List<Quiz> quizes = quizService.getAll();
-			model.addAttribute("Quizes",quizes);
+			model.addAttribute("quizes",quizes);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return "quizes/list";
+		return "notaQuizz";
 	}
 }

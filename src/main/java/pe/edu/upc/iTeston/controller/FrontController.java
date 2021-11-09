@@ -1,12 +1,22 @@
 package pe.edu.upc.iTeston.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import pe.edu.upc.iTeston.business.crud.CareerService;
+import pe.edu.upc.iTeston.models.entities.Career;
 
 @Controller
 @RequestMapping("/")
 public class FrontController {
+	
+	@Autowired
+	private CareerService careerService;
 
 	@GetMapping("inicio-docente")	// request
 	public String landingTeacher() {
@@ -29,7 +39,10 @@ public class FrontController {
 	}
 	
 	@GetMapping("elegir")
-	public String beforeQuizz() {
+	public String beforeQuizz(Model model) throws Exception {
+		List<Career> careers = careerService.getAll();
+		model.addAttribute("careers", careers);
+		model.addAttribute("career", new Career());
 		return "beforeQuizz";
 	}
 	

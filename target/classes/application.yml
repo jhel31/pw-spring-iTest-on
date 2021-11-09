@@ -6,11 +6,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/DBiTest-on
     
     username: postgres
-    password: tonPosSQL1
+    password: 9oe4qvf9
   jpa:
     database: postgresql
     hibernate:
-      ddl-auto: drop-and-create
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:

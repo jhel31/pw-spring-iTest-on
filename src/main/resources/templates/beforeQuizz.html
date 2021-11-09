@@ -21,37 +21,25 @@
 					<h1>Universidad y Carrera</h1>
 				</div>
 			</div>
+			
 			<div class="row" style="padding: 1rem;">
+			
 				<h2>Universidad</h2>
-				
-				  <div class="col-sm-6">
-				    <div class="card">
-					  <img src="/images/logoUNMSM.png" class="card-img-top" alt="..." style="max-width: 50%; height: auto;">
+					
+				<div class="row">
+				  <div class="col col-sm-6" th:each="university : ${universities}">
+				    <div class="card" >
+					  <img src="${'/Images/logo'+ university.id + '.jpeg'}" class="card-img-top" alt="..." style="max-width: 50%; height: auto;">
 					  <div class="card-body">
-					    <h5 class="card-title">Universidad Nacional Mayor de San Marcos</h5>
-					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					    <h5 class="card-title" th:text="${university.name}">Name</h5>
+					    <p class="card-text">Elige la universidad con la que quieras dar examen</p>
 					    <a href="#" class="btn btn-primary">Elegir</a>
-					    
 					  </div>
 					</div>
 				  </div>
-					
+				</div>
+				 
 				  
-				  <div class="col-sm-6">
-				  	<div class="card" >
-					  <img src="/images/logo_uni_2016.png" class="card-img-top" alt="..." >
-					  <div class="card-body">
-					    <h5 class="card-title">Universidad Nacional de Ingenieria</h5>
-					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-						  <label class="form-check-label" for="flexCheckChecked">
-						  </label>
-						</div>
-					  </div>
-					</div>
-				  </div>				
-				
 				
 			</div>
 			<form th:object="${career}">

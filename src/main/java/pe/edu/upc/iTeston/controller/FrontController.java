@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.iTeston.business.crud.CareerService;
 import pe.edu.upc.iTeston.business.crud.QuizService;
+import pe.edu.upc.iTeston.business.crud.UniversityService;
 import pe.edu.upc.iTeston.models.entities.Career;
 import pe.edu.upc.iTeston.models.entities.Quiz;
+import pe.edu.upc.iTeston.models.entities.University;
 
 @Controller
 @RequestMapping("/")
 public class FrontController {
 	
+	@Autowired
+	private UniversityService universityService;
 	@Autowired
 	private CareerService careerService;
 	@Autowired
@@ -41,14 +45,6 @@ public class FrontController {
 		return "allQuestionBanks";
 	}
 	
-	@GetMapping("elegir")
-	public String beforeQuizz(Model model) throws Exception {
-		List<Career> careers = careerService.getAll();
-		model.addAttribute("careers", careers);
-		model.addAttribute("career", new Career());
-		return "beforeQuizz";
-	}
-	
 	@GetMapping("inicio-estudiante")
 	public String landingEstudiante() {
 		return "landingEstudiante";
@@ -65,6 +61,20 @@ public class FrontController {
 		return "planPremium";
 	}
 	
+	@GetMapping("elegir")
+	public String beforeQuizz(Model model) throws Exception {
+		//Carrrera
+		List<Career> careers = careerService.getAll();
+		model.addAttribute("careers", careers);
+		model.addAttribute("career", new Career());
+		
+		//University
+		List<University> universities = universityService.getAll();
+		model.addAttribute("universities", universities);
+		model.addAttribute("university", new University());
+		return "beforeQuizz";
+	}
+		
 	@GetMapping("pago")
 	public String creditCard() {
 		return "creditCard";

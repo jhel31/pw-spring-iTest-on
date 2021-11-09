@@ -29,6 +29,6 @@ public class UniversityController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "university/list";
+		return "universities/list";
 	}
 }

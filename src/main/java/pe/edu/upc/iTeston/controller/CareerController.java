@@ -19,7 +19,7 @@ public class CareerController {
 	@Autowired
 	private CareerService careerService;
 	
-	@GetMapping
+	@GetMapping("simulacro")
 	public String list(Model model) {
 		try {
 			List<Career> careers = careerService.getAll();

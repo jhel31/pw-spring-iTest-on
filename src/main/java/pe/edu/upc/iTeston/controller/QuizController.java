@@ -20,7 +20,7 @@ public class QuizController {
 	@Autowired
 	private QuizService quizService; 
 	
-	@GetMapping("Misnotas")
+	@GetMapping("misnotas")
 	public String list(Model model) {
 		try {
 			List<Quiz> quizes = quizService.getAll();

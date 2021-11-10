@@ -1,9 +1,15 @@
 package pe.edu.upc.iTeston.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import pe.edu.upc.iTeston.business.crud.QuestionBankService;
+import pe.edu.upc.iTeston.models.entities.QuestionBank;
 
 
 @Controller
@@ -26,10 +32,23 @@ public class FrontController {
 		return "newQuestionBank";
 	}
 	
+	
+	
+	@Autowired //injeccion de dependencias
+	private QuestionBankService questionBankService;
+	
 	@GetMapping("mis-balotarios")
-	public String allQuestionBanks() {
+	public String allQuestionBanks(Model model)throws Exception  {
+	List<QuestionBank> questionBanks=questionBankService.getAll();
+	model.addAttribute("questionBanks", questionBanks);
+
 		return "allQuestionBanks";
 	}
+	
+	
+	
+	
+	
 	
 	@GetMapping("inicio-estudiante")
 	public String landingEstudiante() {

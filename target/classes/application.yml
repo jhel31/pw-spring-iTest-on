@@ -6,7 +6,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/DBiTest-on
     
     username: postgres
-    password: 9oe4qvf9
+    password: tonPosSQL1
   jpa:
     database: postgresql
     hibernate:

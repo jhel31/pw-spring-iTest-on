@@ -32,19 +32,21 @@ public class QuestionBankController {
 		}
 		
 		
-		return "questionBanks/list";//html
+		return "students/allQuestionBanks";//html
 	}
 	
-	
+	@GetMapping("{id}/edit")
 	public String edit(Model model, @PathVariable("id") String id) {
 		try {
 			if (questionBankService.existsById(id)) { //si existe hace tal
 				Optional<QuestionBank>optional=questionBankService.findById(id);
-				model.addAttribute("questionBank",optional.get());
+				model.addAttribute("questionBanks",optional.get());//agrega a modelo , ventana emergente
+			}else {
+				return "redirect:/allQuestionBanks";//redirige a mis-balotarios#
 			}
 		}catch (Exception e){
 			//si no existe
 		}
-		return "questionBanks/edit";//html
+		return "students/aditQuestionBank";//html
 	}
 }

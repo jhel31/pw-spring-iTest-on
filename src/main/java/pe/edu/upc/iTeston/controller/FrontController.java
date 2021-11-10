@@ -41,6 +41,11 @@ public class FrontController {
 		return "creditCard";
 	}
 	
+	@GetMapping("retirar")
+	public String gainTeacher() { // quitar
+		return "gainTeacher";
+	}
+	
 	@GetMapping("saldo")
 	public String virtualWallet() { // quitar
 		return "virtualWallet"; 

@@ -25,6 +25,7 @@ public class UniversityController {
 		try {
 			List<University> universities = universityService.getAll();
 			model.addAttribute("universities", universities);
+			model.addAttribute("university", new University());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -38,9 +38,4 @@ public class QuizController {
 		return "quizzes/showQuizz";
 	}
 	
-//	@GetMapping("mostrarsimulacro")
-//	public String mostrarsimulacro() {
-//		
-//		return "quizzes/showQuizz";
-//	}
 }

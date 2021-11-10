@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.iTeston.business.crud.CareerService;
 import pe.edu.upc.iTeston.models.entities.Career;
-	
+
 @Controller
 @RequestMapping("/careers")
 @SessionAttributes("career")
@@ -19,8 +19,8 @@ public class CareerController {
 	@Autowired
 	private CareerService careerService;
 	
-	@GetMapping("simulacro")
-	public String listCareers(Model model) {
+	@GetMapping
+	public String list(Model model) {
 		try {
 			List<Career> careers = careerService.getAll();
 			model.addAttribute("careers", careers);

@@ -151,8 +151,8 @@ public class QuestionBank {
 
 	public void setExercises(List<Exercise> exercises) {
 		this.exercises = exercises;
+	
 	}
-
 	public List<Approval> getApprovals() {
 		return approvals;
 	}
@@ -168,6 +168,38 @@ public class QuestionBank {
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
+	
+	
+	
+	
+	
+	public Integer getQuantityExercise(){//Cantidad de ejercicios
+
+		return exercises.size();
+	}
+	
+	
+	public float getPromApprovals() {
+		int suma=0;
+		float promedio=0;
+		for(int i=0; i<approvals.size(); i++) {//propiedad de cantidad de aprobación, recorre datos
+			suma+=approvals.get(i).getApprovalLevel();
+			promedio=(suma/approvals.size());
+		}
+		return promedio;
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public int hashCode() {

@@ -19,8 +19,10 @@ public class CareerController {
 	@Autowired
 	private CareerService careerService;
 	
+
 	@GetMapping("simulacro")
 	public String listCareers(Model model) {
+
 		try {
 			List<Career> careers = careerService.getAll();
 			model.addAttribute("careers", careers);

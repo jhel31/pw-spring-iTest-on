@@ -18,7 +18,7 @@ import pe.edu.upc.iTeston.models.entities.Teacher;
 public class TeacherController {
 			
 		
-		@Autowired //injeccion de dependencias
+		@Autowired 
 		private TeacherService teacherService;
 		
 		@GetMapping

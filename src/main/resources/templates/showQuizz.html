@@ -97,7 +97,7 @@
 					<!-- estos son los comentarios, imagino que ser�n simples -->
 					<div class="card text-dark bg-light mb-3">
 						<div class="card-body">
-							<form th:action="@{/quizzes/saveNew}" th:object="${comment}"
+							<form th:action="@{/quizzes/mostrarsimulacro}" th:object="${comment}"
 								method="post">
 								<div class="mb-3">
 									<label for="id" class="form-label">Id</label> <input
@@ -113,8 +113,8 @@
 									<input th:value="${questionBanks.id}" type="text" class="form-control"
 										th:name="	questionBank.id">
 								</div>
-								<button type="submit" class="btn btn-success">Save</button>
-								<a th:href="@{/careers/simulacro}" class="btn btn-primary">Cancel</a>
+								<button type="submit" class="btn btn-success" th:href="@{/quizzes/mostrarsimulacro}">Save</button>
+								<a th:href="@{/quizzes/mostrarsimulacro}" class="btn btn-primary">Cancel</a>
 							</form>
 						</div>
 

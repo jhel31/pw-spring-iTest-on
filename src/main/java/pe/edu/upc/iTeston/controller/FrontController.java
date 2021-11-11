@@ -70,7 +70,6 @@ public class FrontController {
 		Object walletRetiro = new Object();
 		
 		model.addAttribute("saldo",saldo);
-		model.addAttribute("walletRetiro", walletRetiro);
 		return "virtualWallet"; 
 	}
 	

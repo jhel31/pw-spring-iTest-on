@@ -1,9 +1,6 @@
 package pe.edu.upc.iTeston.controller;
 
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> branch-Joshua
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,26 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
 import pe.edu.upc.iTeston.business.crud.CareerService;
 import pe.edu.upc.iTeston.business.crud.QuizService;
 import pe.edu.upc.iTeston.models.entities.Career;
 import pe.edu.upc.iTeston.models.entities.Quiz;
-=======
-import pe.edu.upc.iTeston.business.crud.impl.LoginService;
-import pe.edu.upc.iTeston.models.entities.Teacher;
-
-
-
->>>>>>> branch-Joshua
 
 @Controller
 @RequestMapping("/")
 public class FrontController {
-	
-	@Autowired 
-	private LoginService loginService;
-	
 	
 	@Autowired
 	private CareerService careerService;
@@ -41,13 +26,18 @@ public class FrontController {
 		return "landingTeacher";
 	}
 	
+	@GetMapping("simulacro")
+	public String quizz() {
+		return "quizz";
+	}
+
 	@GetMapping("nuevo-balotario")
-	public String newQuestionBank() { // quitar
+	public String newQuestionBank() {
 		return "newQuestionBank";
 	}
 	
 	@GetMapping("mis-balotarios")
-	public String allQuestionBanks() { // quitar
+	public String allQuestionBanks() {
 		return "allQuestionBanks";
 	}
 	
@@ -60,43 +50,30 @@ public class FrontController {
 	}
 	
 	@GetMapping("inicio-estudiante")
-	public String landingEstudiante() { 
+	public String landingEstudiante() {
 		return "landingEstudiante";
 	}
 
-<<<<<<< HEAD
 	@GetMapping("misnotas")
 	public String notaQuizz(Model model) throws Exception {
 			List<Quiz> quizes = quizService.getAll();
 			model.addAttribute("quizes", quizes);
 		return "notaQuizz";
 	}
-=======
->>>>>>> branch-Joshua
 	@GetMapping("premium")
-	public String planPremium() { // quitar
+	public String planPremium() {
 		return "planPremium";
 	}
 	
 	@GetMapping("pago")
-	public String creditCard() { // quitar
+	public String creditCard() {
 		return "creditCard";
 	}
 	
-	@GetMapping("retirar")
-	public String gainTeacher() { // quitar
-		return "gainTeacher";
-	}
-	
 	@GetMapping("saldo")
-	public String virtualWallet(Model model) throws Exception { // quitar
-		Teacher teacher = loginService.getTeacher();
-		Float saldo = teacher.getVirtualWallet().getSaldo();
-		
-		model.addAttribute("saldo",saldo);
-		return "virtualWallet"; 
+	public String virtualWallet() {
+		return "virtualWallet";
 	}
-	
 	@GetMapping("perfil-docente")
 	public String teacherProfile() {
 		return "teacherProfile";

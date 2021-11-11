@@ -70,7 +70,8 @@ public class QuizController {
 	
 	@PostMapping("saveNew")
 	public String saveNew(Model model, @Valid @ModelAttribute("comment") Comment comment, 
-			BindingResult result) {
+			BindingResult result) throws Exception {
+		List<QuestionBank> questionBanks = questionService.getAll();
 		if(result.hasErrors()) {
 			
 		}
@@ -79,9 +80,11 @@ public class QuizController {
 			comment.setStudent(loginService.getStudent());
 			Comment commentSaved= commentService.create(comment);		
 			model.addAttribute("comment", commentSaved);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		model.addAttribute("questionBanks", questionBanks);
 		return "quizzes/showQuizz";
 	}
 	

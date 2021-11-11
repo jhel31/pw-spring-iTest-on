@@ -1,14 +1,25 @@
 package pe.edu.upc.iTeston.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import pe.edu.upc.iTeston.business.crud.impl.LoginService;
+import pe.edu.upc.iTeston.models.entities.Teacher;
+
+
 
 
 @Controller
 @RequestMapping("/")
 public class FrontController {
+	
+	@Autowired 
+	private LoginService loginService;
+	
 	
 	@Autowired
 	@GetMapping("inicio-docente")	// request
@@ -47,9 +58,14 @@ public class FrontController {
 	}
 	
 	@GetMapping("saldo")
-	public String virtualWallet() { // quitar
+	public String virtualWallet(Model model) throws Exception { // quitar
+		Teacher teacher = loginService.getTeacher();
+		Float saldo = teacher.getVirtualWallet().getSaldo();
+		
+		model.addAttribute("saldo",saldo);
 		return "virtualWallet"; 
 	}
+	
 	@GetMapping("perfil-docente")
 	public String teacherProfile() {
 		return "teacherProfile";

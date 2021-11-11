@@ -8,9 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pe.edu.upc.iTeston.business.crud.CareerService;
+import pe.edu.upc.iTeston.business.crud.QuizService;
+import pe.edu.upc.iTeston.models.entities.Career;
+import pe.edu.upc.iTeston.models.entities.Quiz;
 import pe.edu.upc.iTeston.business.crud.impl.LoginService;
 import pe.edu.upc.iTeston.models.entities.Teacher;
-
 
 
 

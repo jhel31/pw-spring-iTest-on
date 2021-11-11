@@ -26,7 +26,7 @@ import pe.edu.upc.iTeston.models.entities.Quiz;
 import pe.edu.upc.iTeston.models.entities.Student;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/quizzes")
 @SessionAttributes("quiz")
 public class QuizController {
 	@Autowired

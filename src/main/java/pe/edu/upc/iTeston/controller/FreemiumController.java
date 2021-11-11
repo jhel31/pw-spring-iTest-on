@@ -29,4 +29,7 @@ public class FreemiumController {
 		
 		return "freemiums/list";
 	}
+	
+
 }
+

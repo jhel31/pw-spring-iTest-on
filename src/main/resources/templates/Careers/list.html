@@ -32,7 +32,7 @@
 							<h5 class="card-title" th:text="${university.name}">Name</h5>
 							<p class="card-text">Elige la universidad con la que quieras
 								dar examen</p>
-							<a  th:href="@{/quizzes/mostrarsimulacro}" class="btn btn-primary">Iniciar Simulacro!</a> 
+							<a th:href="@{'/quizzes/' + ${university.id} + '/mostrarsimulacro'}" class="btn btn-primary">Iniciar Simulacro!</a> 
 						</div>
 					</div>
 				</div>

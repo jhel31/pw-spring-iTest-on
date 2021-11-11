@@ -38,9 +38,20 @@ public class QuizController {
 		return "quizzes/myScores";
 	}
 	
-	@GetMapping("mostrarsimulacro")
-	public String mostrarsimulacro() { //name of method is for html part
-		
+	
+	@GetMapping("{id}/mostrarsimulacro")
+	public String mostrarsimulacro(Model model,@PathVariable("id") String id) { //name of method is for html part
+		try {
+			
+				List<Quiz> quizes = quizService.findByUniversityId(id);
+				model.addAttribute("quizes",quizes);
+				/*model.addAttribute("quizes", new Quiz());*/
+				
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		return "quizzes/showQuizz";
 	}
 	

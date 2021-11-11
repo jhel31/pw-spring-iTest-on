@@ -23,6 +23,7 @@ public class ApprovalController {
 		try {
 			List<Approval> approvals = approvalService.getAll();
 			model.addAttribute("approvals",approvals);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

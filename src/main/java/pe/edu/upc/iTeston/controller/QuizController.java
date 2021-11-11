@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.iTeston.business.crud.QuizService;
+
+//import pe.edu.upc.iTeston.business.crud.UniversityService;
 import pe.edu.upc.iTeston.models.entities.Quiz;
 
 @Controller
@@ -19,6 +22,9 @@ public class QuizController {
 	
 	@Autowired
 	private QuizService quizService; 
+	
+	/*@Autowired
+	private UniversityService universityService; */
 	
 	@GetMapping("misnotas")
 	public String list(Model model) {

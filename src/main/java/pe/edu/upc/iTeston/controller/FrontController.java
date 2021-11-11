@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.upc.iTeston.business.crud.impl.LoginService;
 import pe.edu.upc.iTeston.models.entities.Teacher;
 
-
-
-
 @Controller
 @RequestMapping("/")
 public class FrontController {
@@ -58,11 +55,22 @@ public class FrontController {
 	}
 	
 	@GetMapping("saldo")
-	public String virtualWallet(Model model) throws Exception { // quitar
+	public String showMoney(Model model) throws Exception { // quitar
 		Teacher teacher = loginService.getTeacher();
 		Float saldo = teacher.getVirtualWallet().getSaldo();
 		
 		model.addAttribute("saldo",saldo);
+		return "virtualWallet"; 
+	}
+	
+	@GetMapping("edit")
+	public String virtualWallet(Model model) throws Exception { // 
+		Teacher teacher = loginService.getTeacher();
+		Float saldo = teacher.getVirtualWallet().getSaldo();
+		Object walletRetiro = new Object();
+		
+		model.addAttribute("saldo",saldo);
+		model.addAttribute("walletRetiro", walletRetiro);
 		return "virtualWallet"; 
 	}
 	

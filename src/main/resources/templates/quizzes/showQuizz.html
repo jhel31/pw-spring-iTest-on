@@ -111,10 +111,9 @@
 								<div class="mb-3">
 									<label for="simulacro" class="form-label">simulacro</label>
 									<input th:value="${questionBanks.id}" type="text" class="form-control"
-										th:name="	questionBank.id">
+										th:name="questionBank.id">
 								</div>
 								<button type="submit" class="btn btn-success" th:href="@{/quizzes/mostrarsimulacro}">Save</button>
-								<a th:href="@{/quizzes/mostrarsimulacro}" class="btn btn-primary">Cancel</a>
 							</form>
 						</div>
 
@@ -125,7 +124,7 @@
 
 			<div class="row">
 				<div class="d-grid gap-2 col-6 mx-auto">
-					<a th:href="@{/misnotas}" class="btn btn-primary">Terminar
+					<a th:href="@{/quizzes/misnotas}" class="btn btn-primary">Terminar
 						simulacro</a>
 				</div>
 			</div>

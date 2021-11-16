@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="dashboardStudent :: frag-head(~{::title})">
+
+	<title>beforeSimulacro</title>
+
+</head>
+<body>
+	
+	<div th:replace="dashboardStudent :: frag-sidebar">
+      
+    </div>
+	
+	<!--sidebar end-->
+
+	<div class="content">
+	
+		<div class="container">
+			<div class="row">
+				<div class="card" style=" margin-top: 5rem;">
+					<h1>Universidad y Carrera</h1>
+				</div>
+			</div>
+			
+			<div class="row" style="padding: 1rem;">
+				<h2>Universidad</h2>
+				
+				  <div class="col-sm-6" th:each="university : ${universities}">
+				    <div class="card" >
+					  <img th:src="@{'/Images/logo' + ${university.id} + '.png'}" class="card-img-top" alt="..." style="max-width: 50%; height:auto;">
+					  <div class="card-body">
+					    <h5 class="card-title" th:text="${university.name}">Name</h5>
+					    <p class="card-text">Elige la universidad con la que quieras dar examen</p>
+					    <a href="#" class="btn btn-primary" >Elegir</a>
+					  </div>
+					</div>
+				  </div>
+			
+			</div>
+			<form th:object="${career}">
+				<div class="row" style="padding: 1rem;">
+					<h2>Carrera</h2>
+					<div class="card">
+					    <p class="card-text">Selecciona la carrera a la que quieres postular para darte un simulacro des acuerdo a la necesidad</p>
+						<select class="form-select" th:field="*{id}" aria-label="Default select example">
+							<option th:each="career: ${careers}" th:value="${career.id}"
+								th:text="${career.name}"
+								th:selected="(${career.id} == *{id})">
+							</option>
+						</select>
+					</div>				
+				</div>
+			</form>
+			
+			<div class="row">
+				<div class="card text-end" >
+				  <div class="card-body">
+				    <h5 class="card-title">Estamos listos!</h5>
+				    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				    <a th:href="@{/quizzes/mostrarsimulacro}" class="btn btn-primary">Iniciar Simulacro!</a>
+				  </div>
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
+	
+	<footer th:replace="dashboardStudent :: frag-footer">
+		
+	</footer>
+</body>
+</html>

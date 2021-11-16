@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -53,6 +54,25 @@ public class QuizController {
 		return "quizzes/myScores";
 	}
 	
+	@GetMapping("{id}/mostrarsimulacro")
+    public String mostrarsimulacro(Model model,@PathVariable("id") String id) { //name of method is for html part
+        try {
+
+                List<Quiz> quizes = quizService.findByUniversityId(id);
+                model.addAttribute("quizes",quizes);
+                model.addAttribute("quizes", new Quiz());
+                List<QuestionBank> questionBanks =  questionService.getAll();
+        		
+        		model.addAttribute("comment",new Comment());
+        		model.addAttribute("questionBanks", questionBanks);
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "quizzes/showQuizz";
+    }
+	
 	@GetMapping("new")
 	public String newComent(Model model) {
 		try {
@@ -70,7 +90,8 @@ public class QuizController {
 	
 	@PostMapping("saveNew")
 	public String saveNew(Model model, @Valid @ModelAttribute("comment") Comment comment, 
-			BindingResult result) {
+			BindingResult result) throws Exception {
+		List<QuestionBank> questionBanks = questionService.getAll();
 		if(result.hasErrors()) {
 			
 		}
@@ -79,20 +100,15 @@ public class QuizController {
 			comment.setStudent(loginService.getStudent());
 			Comment commentSaved= commentService.create(comment);		
 			model.addAttribute("comment", commentSaved);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "quizzes/showQuizz";
-	}
-	
-	
-	@GetMapping("mostrarsimulacro")
-	public String mostrarsimulacro(Model model) throws Exception { //name of method is for html part
-		List<QuestionBank> questionBanks =  questionService.getAll();
-		
-		model.addAttribute("comment",new Comment());
 		model.addAttribute("questionBanks", questionBanks);
 		return "quizzes/showQuizz";
 	}
+	
+	
+	
 	
 }

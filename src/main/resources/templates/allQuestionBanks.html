@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th ="http://www.thymeleaf.org">
   <head th:replace="dashboardTeacher :: frag-head(~{::title})">
-
-    <title>Mis Balotarios</title>
+          <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
     
+    
+    
+    <title>Mis Balotarios</title>
   </head>
   <body>
-    
     <div th:replace="dashboardTeacher :: frag-sidebar">
-      
     </div>
     <!--side bar end-->
-
     <div class="content">
       <div class="container">
       	<div class="row">
-			<div class="card" style=" margin-top: 5rem;">
+			<div class="card" style=" margin-top: 5rem;">		  
 				<h1>Mis Balotarios</h1>
 			</div>
 		</div>
@@ -27,31 +28,24 @@
 				  <thead>
 				    <tr>
 				      <th scope="col">Id</th>
-				      <th scope="col">Descripcion</th>
+				      <th scope="col">Curso</th>
 				      <th scope="col">Fecha de creacion</th>
-				      <th scope="col">Numero de ejercicios</th>
-				      
+				      <th scope="col">Cantidad de ejercicios</th>
+				      <th scope="col">Promedio de aprobacion</th>
+				      <th scope="col">Comentarios</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Balotario de razonamiento verbal</td>
-				      <td>27/09/2021</td>
-				      <td>10</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Balotario de razonamiento verbal</td>
-				      <td>22/09/2021</td>
-				      <td>11</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td>Balotario de razonamiento verbal</td>
-				      <td>10/09/2021</td>
-				      <td>12</td>
-				    </tr>
+				  	<tr th:each="questionBk : ${questionBanks}">
+       				<td th:text="${questionBk.id}"></td>
+      				<td th:text="${questionBk.teacher.course.name}"></td>
+      		      	<td th:text="${questionBk.creationDate}"></td>
+      				<td th:text="${questionBk.getQuantityExercise()}"></td>
+      				<td th:text="${questionBk.getPromApprovals()}"></td>
+      				<td th:href="${'questionBanks' +questionBk.comments+'/comment' }" class="btn btn-primary">Ver comentarios</td>
+		
+				  	</tr>
+
 				  </tbody>
 				</table>
 				<nav aria-label="Page navigation example">
@@ -60,6 +54,7 @@
 				    <li class="page-item"><a class="page-link" href="#">1</a></li>
 				    <li class="page-item"><a class="page-link" href="#">2</a></li>
 				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				     <li class="page-item"><a class="page-link" href="#">4</a></li>
 				    <li class="page-item"><a class="page-link" href="#">Next</a></li>
 				  </ul>
 				</nav>

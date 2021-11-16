@@ -66,7 +66,7 @@ public class FrontController {
 	public String showMoney(Model model) throws Exception { // quitar
 		Teacher teacher = loginService.getTeacher();
 		Float saldo = teacher.getVirtualWallet().getSaldo();
-		model.addAttribute("saldo", saldo);
+
 		return "virtualWallet";
 	}
 

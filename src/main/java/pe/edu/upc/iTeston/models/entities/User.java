@@ -124,6 +124,29 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public User(@NotNull @NotBlank @Size(max = 30) String username, @NotNull @NotBlank @Size(max = 60) String password,
+			Student student) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.student = student;
+	}
+
+	public User(@NotNull @NotBlank @Size(max = 30) String username, @NotNull @NotBlank @Size(max = 60) String password,
+			Teacher teacher) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.teacher = teacher;
+	}
+
+	public User(@NotNull @NotBlank @Size(max = 30) String username,
+			@NotNull @NotBlank @Size(max = 60) String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
 	
 	
 }

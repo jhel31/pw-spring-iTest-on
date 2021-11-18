@@ -44,11 +44,6 @@ public class Teacher {
 	@Column(name = "email_teacher", length = 100, nullable = false)
 	private String email;
 	
-	@NotNull
-	@NotBlank
-	@Size(max = 30)
-	@Column(name = "password", length = 30, nullable = false)
-	private String password;
 
 	@NotNull
 	@Column(name = "document_experience", length = 30, nullable = false)
@@ -80,7 +75,6 @@ public class Teacher {
 		this.name = name;
 		this.lastname = lastname;
 		this.email = email;
-		this.password = password;
 		this.documentExperience = documentExperience;
 		this.virtualWallet = virtualWallet;
 		this.course = course;
@@ -120,14 +114,6 @@ public class Teacher {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public Boolean getDocumentExperience() {
 		return documentExperience;
 	}
@@ -162,7 +148,7 @@ public class Teacher {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(course, documentExperience, email, id, lastname, name, password, questionBanks,
+		return Objects.hash(course, documentExperience, email, id, lastname, name, questionBanks,
 				virtualWallet);
 	}
 
@@ -178,7 +164,6 @@ public class Teacher {
 		return Objects.equals(course, other.course) && Objects.equals(documentExperience, other.documentExperience)
 				&& Objects.equals(email, other.email) && Objects.equals(id, other.id)
 				&& Objects.equals(lastname, other.lastname) && Objects.equals(name, other.name)
-				&& Objects.equals(password, other.password) && Objects.equals(questionBanks, other.questionBanks)
 				&& Objects.equals(virtualWallet, other.virtualWallet);
 	}
 

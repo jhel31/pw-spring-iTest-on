@@ -43,12 +43,6 @@ public class Student {
 	@Column(name = "email_student", length = 40)
 	private String email;
 
-	@NotNull
-	@NotBlank 
-	@Size (max=30)
-	@Column(name = "password_student", length = 30)
-	private String password;
-
 	@ManyToOne
 	@JoinColumn(name = "id_freemium", nullable = false)
 	private Freemium freemium;
@@ -98,13 +92,6 @@ public class Student {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public Freemium getFreemium() {
 		return freemium;
@@ -148,7 +135,7 @@ public class Student {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(approvals, comments, email, freemium, id, lastname, name, password, subscriptions, user);
+		return Objects.hash(approvals, comments, email, freemium, id, lastname, name, subscriptions, user);
 	}
 
 	@Override
@@ -163,7 +150,6 @@ public class Student {
 		return Objects.equals(approvals, other.approvals) && Objects.equals(comments, other.comments)
 				&& Objects.equals(email, other.email) && Objects.equals(freemium, other.freemium)
 				&& Objects.equals(id, other.id) && Objects.equals(lastname, other.lastname)
-				&& Objects.equals(name, other.name) && Objects.equals(password, other.password)
 				&& Objects.equals(subscriptions, other.subscriptions) && Objects.equals(user, other.user);
 	}
 
@@ -176,7 +162,6 @@ public class Student {
 		this.name = name;
 		this.lastname = lastname;
 		this.email = email;
-		this.password = password;
 		this.freemium = freemium;
 		this.comments = comments;
 		this.approvals = approvals;

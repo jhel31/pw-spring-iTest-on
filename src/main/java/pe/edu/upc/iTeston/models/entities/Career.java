@@ -1,14 +1,13 @@
 package pe.edu.upc.iTeston.models.entities;
 
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Index;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -29,21 +28,10 @@ public class Career {
 	@Size(max = 60)
 	@Column(name = "name_career", length = 60)
 	private String name;
-
-	@OneToMany(mappedBy = "career", fetch = FetchType.LAZY)
-	private List<UniversityDetail> universityDetails;
-
-	public Career() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Career(String id, String name, List<UniversityDetail> universityDetails) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.universityDetails = universityDetails;
-	}
+	
+	@ManyToOne
+	@JoinColumn(name = "id_university", nullable=false)
+	private University university;
 
 	public String getId() {
 		return id;
@@ -61,9 +49,17 @@ public class Career {
 		this.name = name;
 	}
 
+	public University getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(University university) {
+		this.university = university;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, universityDetails);
+		return Objects.hash(id, name, university);
 	}
 
 	@Override
@@ -76,7 +72,21 @@ public class Career {
 			return false;
 		Career other = (Career) obj;
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name)
-				&& Objects.equals(universityDetails, other.universityDetails);
+				&& Objects.equals(university, other.university);
 	}
+
+	public Career(@NotNull @NotBlank @Size(max = 10) String id, @NotNull @NotBlank @Size(max = 60) String name,
+			University university) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.university = university;
+	}
+
+	public Career() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 
 }

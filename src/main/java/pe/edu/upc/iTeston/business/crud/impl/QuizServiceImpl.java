@@ -1,5 +1,7 @@
 package pe.edu.upc.iTeston.business.crud.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -19,4 +21,9 @@ public class QuizServiceImpl implements QuizService {
 		return quizRepository;
 	}
 
+	@Override
+    public List<Quiz> findByUniversityId(String id) throws Exception {
+
+        return quizRepository.findByUniversityId(id);
+    }	
 }

@@ -33,53 +33,42 @@ public class University {
 	private String name;
 	
 	@OneToMany(mappedBy = "university", fetch = FetchType.LAZY)
-	private List<UniversityDetail> universityDetail;
-	
-	@OneToMany(mappedBy = "university", fetch = FetchType.LAZY)
 	private List<Quiz> quizzes;
 	
+	@OneToMany(mappedBy = "university", fetch = FetchType.LAZY)
+	private List<Career> careers;
 	public University() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public University(String id, String name, List<UniversityDetail> universityDetail, List<Quiz> quizzes) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.universityDetail = universityDetail;
-		this.quizzes = quizzes;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public List<Quiz> getQuizzes() {
-		return quizzes;
-	}
-
-	public void setQuizzes(List<Quiz> quizzes) {
-		this.quizzes = quizzes;
-	}
-	
 	public String getId() {
 		return id;
 	}
-	
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public List<Quiz> getQuizzes() {
+		return quizzes;
+	}
+	public void setQuizzes(List<Quiz> quizzes) {
+		this.quizzes = quizzes;
+	}
+	public List<Career> getCareers() {
+		return careers;
+	}
+	public void setCareers(List<Career> careers) {
+		this.careers = careers;
+	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, quizzes, universityDetail);
+		return Objects.hash(careers, id, name, quizzes);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -89,9 +78,18 @@ public class University {
 		if (getClass() != obj.getClass())
 			return false;
 		University other = (University) obj;
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name)
-				&& Objects.equals(quizzes, other.quizzes) && Objects.equals(universityDetail, other.universityDetail);
+		return Objects.equals(careers, other.careers) && Objects.equals(id, other.id)
+				&& Objects.equals(name, other.name) && Objects.equals(quizzes, other.quizzes);
 	}
+	public University(@NotNull @NotBlank @Size(max = 10) String id, @NotNull @NotBlank @Size(max = 50) String name,
+			List<Quiz> quizzes, List<Career> careers) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.quizzes = quizzes;
+		this.careers = careers;
+	}
+
 	
 	
 }

@@ -80,7 +80,23 @@ public class QuestionBank {
 		this.approvals = approvals;
 		this.comments = comments;
 	}
+	
+	public Integer getQuantityExercise(){//Cantidad de ejercicios
 
+		return exercises.size();
+	}
+	
+	
+	public float getPromApprovals() {
+		int suma=0;
+		float promedio=0;
+		for(int i=0; i<approvals.size(); i++) {//propiedad de cantidad de aprobaciÃ³n, recorre datos
+			suma+=approvals.get(i).getApprovalLevel();
+			promedio=(suma/approvals.size());
+		}
+		return promedio;
+	}
+	
 	public String getId() {
 		return id;
 	}

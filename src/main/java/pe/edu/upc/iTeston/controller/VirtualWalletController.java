@@ -7,17 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.iTeston.business.crud.VirtualWalletService;
 import pe.edu.upc.iTeston.models.entities.VirtualWallet;
 
+
 @Controller
-@RequestMapping("/virtualWallets") //como me dirijo a apartado html
+@RequestMapping("/virtualWallets") 
+@SessionAttributes("virtualWallet")
 public class VirtualWalletController {
 	@Autowired 
 	private VirtualWalletService virtualWalletService;
+//	@Autowired
+//	private LoginService loginService;
 	
 	@GetMapping
 	public String list(Model model ){
@@ -30,20 +34,20 @@ public class VirtualWalletController {
 			e.printStackTrace();
 		}
 		
-		
-		return "billeteraVirtual??/list";//html
+		return "virtualWallets/list";//html
 	}
 	
+//	@GetMapping("/edit")
+//	public String edit(Model model) {
+//		try {
+//			loginService.getTeacher().setVirtualWallet();
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		
+//		return "countries/edit";
+//	}
 	
-	public String edit(Model model, @PathVariable("id") String id) {
-		try {
-			if (virtualWalletService.existsById(id)) { //si existe hace tal
-				Optional<VirtualWallet>optional=virtualWalletService.findById(id);
-				model.addAttribute("virtualWallet",optional.get());
-			}
-		}catch (Exception e){
-			//si no existe
-		}
-		return "billeteraVirtual??/list";//html
-	}
+	
 }

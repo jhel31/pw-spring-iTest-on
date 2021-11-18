@@ -2,8 +2,12 @@
 <html lang="en" dir="ltr" xmlns:th ="http://www.thymeleaf.org">
   <head th:replace="dashboardStudent :: frag-head(~{::title})">
 
-    <title>Pago de Suscripcion</title>
-    
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+
+
+    <title>Suscripcion realizada</title>
   </head>
   <body>
     
@@ -16,12 +20,15 @@
       <div class="container">
       	<div class="row">
 			<div class="card" style=" margin-top: 5rem;">
-				<h1>Adquiere premium ahora</h1>
+				<h1>Suscripcion realizada</h1>
 			</div>
 		</div>
 		
 		<!-- -->
 		
+	
+		
+
 		<div class="row">
 			<div class="card">
 			  <h5 class="card-header text-center">Introduce la informacion de pago</h5>
@@ -32,68 +39,40 @@
 				    <div class="card border-secondary mb-3">
 				    <img src="/images/premiumImage.jpg" class="card-img-top" alt="...">
 				      <div class="card-body">
-				        <h4 class="card-title">Premium</h4>
+				      
+				        <h4 class="card-title">Premium Activado</h4>
 				        <p class="card-text">Obten todo el contenido de los examenes de iTest-on para tu preparacion al ingresar a la universidad</p>
 				        <ol class="list-group list-group-numbered">
 						  <li class="list-group-item d-flex justify-content-between align-items-start">
 						    <div class="ms-2 me-auto">
-						      <div class="fw-bold">Simulacros ilimitados</div>
+						      <div class="fw-bold">Nombre: Judith </div>
+						      
+						     
+						 
+						    </div>
+						  
+						    
+						  </li>
+						  <li class="list-group-item d-flex justify-content-between align-items-start" >
+						    <div class="ms-2 me-auto">
+						    
+						      <div class="fw-bold">Fecha de suscripción: 20/09/2021</div>
 						    </div>
 						    
 						  </li>
 						  <li class="list-group-item d-flex justify-content-between align-items-start">
 						    <div class="ms-2 me-auto">
-						      <div class="fw-bold">Notas especificas con estadisticas por curso</div>
+						      <div class="fw-bold">Precio plan: S/.12.99</div>
 						    </div>
-						    
-						  </li>
-						  <li class="list-group-item d-flex justify-content-between align-items-start">
-						    <div class="ms-2 me-auto">
-						      <div class="fw-bold">Otras features</div>
-						    </div>
-						    
+									    
+										    
+					
 						  </li>
 						</ol>
 				      </div>
 				    </div>
 				  </div>
 				  
-				  <div class="col-sm-6">
-				    <div class="card border-secondary mb-3">
-				      <div class="card-body">
-				        <h4 class="card-title">Metodo de pago</h4>
-				        
-				        <div class="mb-3">
-						  <label for="emailInput1" class="form-label">Email</label>
-						  <input type="email" class="form-control" id="emailInput1" placeholder="nombre@ejemplo.com">
-						</div>
-						
-				        <div class="mb-3">
-						  <label for="numeroTarjeta" class="form-label">Numero Tarjeta</label>
-						  <input type="text" class="form-control" id="numeroTarjeta" placeholder="1234 1234 1234 1234">
-						  <div class="input-group mb-3">
-							  <input type="text" class="form-control" id="fechaVencimiento" placeholder="MM / YY">
-							  <input type="text" class="form-control" id="cvc" placeholder="CVC">
-						  </div>
-						</div>				        
-				        
-				        <div class="mb-3">
-						  <label for="nombreTarjeta" class="form-label">Nombre en tarjeta</label>
-						  <input type="text" class="form-control" id="nombreTarjeta" placeholder="Nombre">
-						</div>
-						
-						
-				        
-				        <div class="d-grid gap-2">
-					        <a href="#" class="btn btn-primary" style="border-radius: 8px;">Pagar <span>S/10.00</span></a>
-				        </div>
-				        
-				        
-				      </div>
-				    </div>
-				  </div>
-				</div>
-			  	
 			  </div>
 			</div>
 		</div>

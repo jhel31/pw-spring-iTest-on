@@ -21,9 +21,11 @@ public class Subscription {
 	private String id;
 	
 	@Column(name = "issueDate_subcription", length = 40, nullable = false)
+	//fecha de pago
 	private Date issueDate;
 	
 	@Column(name = "expire_subcription", length = 40, nullable = false)
+	//fecha de vencimineto
 	private Date expire;
 	
 	@NotNull

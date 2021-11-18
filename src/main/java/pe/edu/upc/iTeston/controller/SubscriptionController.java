@@ -48,6 +48,16 @@ public class SubscriptionController {
 	
 	
 	
+	@GetMapping("viewPago")//funcion que llega el view y subscriptionId
+	public String viewDataSubscription(Model model) throws Exception{
+		List<Subscription> suscriptions =subscriptionService.getAll();
+		model.addAttribute("subscriptions", new Subscription());
+		
+		return ("viewSubscription");
+	}
+	
+	
+	
 	/*
 	 * 	
 	@GetMapping("viewPago/{subscriptionId}")//funcion que llega el view y subscriptionId
@@ -67,10 +77,6 @@ public class SubscriptionController {
 
 	 * */
 	
-
-	
-	
-	
 	
 	@GetMapping("newPago")
 	public String newSubscription(Model model) {
@@ -83,7 +89,7 @@ public class SubscriptionController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}		
-		return "universitiesDetails/new";
+		return "viewSubscription";
 	}
 	
 	
@@ -94,8 +100,12 @@ public class SubscriptionController {
 	
 		}
 		System.out.println(subscription.getId());
-	System.out.println(subscription.getIssueDate());
+		System.out.println(subscription.getIssueDate());
 		System.out.println(subscription.getExpire());
+		
+		
+		
+		
 		try {
 			Subscription subscriptionSaved= subscriptionService.create(subscription);		
 			model.addAttribute("subscription", subscriptionSaved);

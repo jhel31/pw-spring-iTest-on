@@ -44,16 +44,25 @@ public class Teacher {
 	@Column(name = "email_teacher", length = 100, nullable = false)
 	private String email;
 	
-	@NotNull
-	@NotBlank
-	@Size(max = 30)
-	@Column(name = "password", length = 30, nullable = false)
-	private String password;
 
 	@NotNull
 	@Column(name = "document_experience", length = 30, nullable = false)
 	private Boolean documentExperience;
 
+	@OneToOne
+	@JoinColumn(name = "virtualWallet_id", nullable = true)
+	private VirtualWallet virtualWallet; // virtualWallet
+	
+	@ManyToOne
+	@JoinColumn(name = "course_id", nullable = false)
+	private Course course; // course_id
+	
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
+	private List<QuestionBank> questionBanks;
 	public Teacher() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -66,24 +75,12 @@ public class Teacher {
 		this.name = name;
 		this.lastname = lastname;
 		this.email = email;
-		this.password = password;
 		this.documentExperience = documentExperience;
 		this.virtualWallet = virtualWallet;
 		this.course = course;
 		this.questionBanks = questionBanks;
 	}
 
-	@OneToOne
-	@JoinColumn(name = "virtualWallet_id", nullable = true)
-	private VirtualWallet virtualWallet; // virtualWallet
-
-	@ManyToOne
-	@JoinColumn(name = "course_id", nullable = false)
-	private Course course; // course_id
-
-	/*--*/
-	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-	private List<QuestionBank> questionBanks;
 
 	public String getId() {
 		return id;
@@ -115,14 +112,6 @@ public class Teacher {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public Boolean getDocumentExperience() {
@@ -159,7 +148,7 @@ public class Teacher {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(course, documentExperience, email, id, lastname, name, password, questionBanks,
+		return Objects.hash(course, documentExperience, email, id, lastname, name, questionBanks,
 				virtualWallet);
 	}
 
@@ -175,7 +164,6 @@ public class Teacher {
 		return Objects.equals(course, other.course) && Objects.equals(documentExperience, other.documentExperience)
 				&& Objects.equals(email, other.email) && Objects.equals(id, other.id)
 				&& Objects.equals(lastname, other.lastname) && Objects.equals(name, other.name)
-				&& Objects.equals(password, other.password) && Objects.equals(questionBanks, other.questionBanks)
 				&& Objects.equals(virtualWallet, other.virtualWallet);
 	}
 

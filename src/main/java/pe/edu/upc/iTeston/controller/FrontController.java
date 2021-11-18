@@ -24,13 +24,17 @@ public class FrontController {
 	
 	@GetMapping("simulacro")
 	public String quizz() {
-		return "quizz";
+		return "quizzes/quizz";
 	}
 
 	@GetMapping("nuevo-balotario")
 	public String newQuestionBank() {
 		return "newQuestionBank";
 	}
+	
+	
+	
+	
 	
 	
 	
@@ -44,6 +48,22 @@ public class FrontController {
 
 		return "allQuestionBanks";
 	}
+	//llama información de plan 
+	@GetMapping("premium")
+	public String planPremium() {
+		return "planPremium";
+	}
+	
+	//llama formulario de datos de pago
+	@GetMapping("pago")
+	public String creditCard() {
+		return "creditCard";
+		//return "viewSuscription";
+	}
+	@GetMapping("suscripcionRealizada")
+	public String viewSuscription() {
+		return "viewSuscription";
+	}
 	
 	
 	
@@ -55,17 +75,6 @@ public class FrontController {
 		return "landingEstudiante";
 	}
 
-
-	@GetMapping("premium")
-	public String planPremium() {
-		return "planPremium";
-	}
-	
-	@GetMapping("pago")
-	public String creditCard() {
-		return "creditCard";
-	}
-	
 	@GetMapping("saldo")
 	public String virtualWallet() {
 		return "virtualWallet";

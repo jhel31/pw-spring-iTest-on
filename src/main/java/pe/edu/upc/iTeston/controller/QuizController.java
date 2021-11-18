@@ -12,51 +12,68 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.iTeston.business.crud.ApprovalService;
+import pe.edu.upc.iTeston.business.crud.CommentService;
 import pe.edu.upc.iTeston.business.crud.QuestionBankService;
 import pe.edu.upc.iTeston.business.crud.QuizService;
+import pe.edu.upc.iTeston.business.crud.StudentService;
 import pe.edu.upc.iTeston.business.crud.impl.LoginService;
 import pe.edu.upc.iTeston.models.entities.Approval;
 import pe.edu.upc.iTeston.models.entities.QuestionBank;
 import pe.edu.upc.iTeston.models.entities.Quiz;
+import pe.edu.upc.iTeston.models.entities.Student;
 
 @Controller
-@RequestMapping("/questionBanks")
-public class QuestionBankController {
-
-	@Autowired //injeccion de dependencias
-	private QuestionBankService questionBankService;
+@RequestMapping("/quizzes")
+@SessionAttributes("quiz")
+public class QuizController {
 	@Autowired
-	private QuizService quizService;
+	private StudentService studentService; 
 	@Autowired
-	private LoginService loginService;
+	private QuizService quizService; 
+	@Autowired
+	private QuestionBankService questionService; 
+	@Autowired
+	private CommentService commentService;
 	@Autowired
 	private ApprovalService approvalService;
 	
-	@GetMapping
-	public String list(Model model ){
-		
+	@Autowired
+	private LoginService loginService; 
+	
+	@GetMapping("misnotas")
+	public String list(Model model) {
 		try {
-			Optional<Quiz> quizzes=quizService.findById("QU02");
-			model.addAttribute("quizzes", quizzes.get());
-			List<QuestionBank> questionBanks=questionBankService.getAll();
-			model.addAttribute("questionBanks", questionBanks);
-			model.addAttribute("approval",new Approval());
+            Optional<Quiz> quizzes=quizService.findById("QU01");
+            model.addAttribute("quizzes", quizzes.get());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		
-		return "quizz";//html
+		}		
+		return "";
 	}
+	
+	@GetMapping("new")
+	public String newApproval(Model model) {
+		try {
+			List<Student> students = studentService.getAll();
+			List<QuestionBank> questions = questionService.getAll();
+			model.addAttribute("students", students);
+			model.addAttribute("questions", questions);
+			model.addAttribute("approval", new Approval());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}		
+		return "";
+	}
+	
 	@PostMapping("saveNew")
 	public String saveNew(Model model, @Valid @ModelAttribute("approval") Approval approval, 
-			BindingResult result) throws Exception {
+			BindingResult result) {
 		if(result.hasErrors()) {
 			
 		}
@@ -68,19 +85,17 @@ public class QuestionBankController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "quizz";
+		return "";
 	}
 	
 	
-	public String edit(Model model, @PathVariable("id") String id) {
-		try {
-			if (questionBankService.existsById(id)) { //si existe hace tal
-				Optional<QuestionBank>optional=questionBankService.findById(id);
-				model.addAttribute("questionBank",optional.get());
-			}
-		}catch (Exception e){
-			//si no existe
-		}
-		return "";//html
+	@GetMapping("mostrarsimulacro")
+	public String mostrarsimulacro(Model model) throws Exception { //name of method is for html part
+		List<QuestionBank> questionBanks =  questionService.getAll();
+		
+		model.addAttribute("approval",new Approval());
+		model.addAttribute("questionBanks", questionBanks);
+		return "";
 	}
+	
 }

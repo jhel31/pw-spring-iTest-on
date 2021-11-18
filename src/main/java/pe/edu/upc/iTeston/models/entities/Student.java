@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -36,7 +37,6 @@ public class Student {
 	@Column(name = "lastname_student", length = 100)
 	private String lastname;
 
-	
 	@NotNull
 	@NotBlank 
 	@Size (max=40)
@@ -49,7 +49,6 @@ public class Student {
 	@Column(name = "password_student", length = 30)
 	private String password;
 
-	
 	@ManyToOne
 	@JoinColumn(name = "id_freemium", nullable = false)
 	private Freemium freemium;
@@ -62,6 +61,10 @@ public class Student {
 	
 	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
 	private List<Subscription> subscriptions;
+	
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public String getId() {
 		return id;
@@ -135,9 +138,17 @@ public class Student {
 		this.subscriptions = subscriptions;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(approvals, comments, email, freemium, id, lastname, name, password, subscriptions);
+		return Objects.hash(approvals, comments, email, freemium, id, lastname, name, password, subscriptions, user);
 	}
 
 	@Override
@@ -153,16 +164,13 @@ public class Student {
 				&& Objects.equals(email, other.email) && Objects.equals(freemium, other.freemium)
 				&& Objects.equals(id, other.id) && Objects.equals(lastname, other.lastname)
 				&& Objects.equals(name, other.name) && Objects.equals(password, other.password)
-				&& Objects.equals(subscriptions, other.subscriptions);
+				&& Objects.equals(subscriptions, other.subscriptions) && Objects.equals(user, other.user);
 	}
 
-	public Student() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Student(String id, String name, String lastname, String email, String password, Freemium freemium,
-			List<Comment> comments, List<Approval> approvals, List<Subscription> subscriptions) {
+	public Student(@NotBlank String id, @NotNull @NotBlank @Size(max = 30) String name,
+			@NotNull @NotBlank @Size(max = 100) String lastname, @NotNull @NotBlank @Size(max = 40) String email,
+			@NotNull @NotBlank @Size(max = 30) String password, Freemium freemium, List<Comment> comments,
+			List<Approval> approvals, List<Subscription> subscriptions, User user) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -173,6 +181,14 @@ public class Student {
 		this.comments = comments;
 		this.approvals = approvals;
 		this.subscriptions = subscriptions;
+		this.user = user;
 	}
+
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
 	
 }

@@ -1,5 +1,7 @@
 package pe.edu.upc.iTeston.models.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -52,6 +54,37 @@ public class VirtualWallet {
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, saldo, teacher);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		VirtualWallet other = (VirtualWallet) obj;
+		return Objects.equals(id, other.id) && Objects.equals(saldo, other.saldo)
+				&& Objects.equals(teacher, other.teacher);
+	}
+
+	public VirtualWallet(@NotNull @NotBlank @Size(max = 10) String id, @NotNull @NotBlank @Size(max = 10) Float saldo,
+			Teacher teacher) {
+		super();
+		this.id = id;
+		this.saldo = saldo;
+		this.teacher = teacher;
+	}
+
+	public VirtualWallet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	

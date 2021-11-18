@@ -54,6 +54,20 @@ public class Teacher {
 	@Column(name = "document_experience", length = 30, nullable = false)
 	private Boolean documentExperience;
 
+	@OneToOne
+	@JoinColumn(name = "virtualWallet_id", nullable = true)
+	private VirtualWallet virtualWallet; // virtualWallet
+	
+	@ManyToOne
+	@JoinColumn(name = "course_id", nullable = false)
+	private Course course; // course_id
+	
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
+	private List<QuestionBank> questionBanks;
 	public Teacher() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -73,17 +87,6 @@ public class Teacher {
 		this.questionBanks = questionBanks;
 	}
 
-	@OneToOne
-	@JoinColumn(name = "virtualWallet_id", nullable = true)
-	private VirtualWallet virtualWallet; // virtualWallet
-
-	@ManyToOne
-	@JoinColumn(name = "course_id", nullable = false)
-	private Course course; // course_id
-
-	/*--*/
-	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-	private List<QuestionBank> questionBanks;
 
 	public String getId() {
 		return id;

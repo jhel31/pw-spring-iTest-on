@@ -42,7 +42,7 @@ public class User {
 	private Boolean enable;
 
 	@OneToMany
-	@JoinColumn(name = "user")
+	@JoinColumn(name = "user_id")
 	private List<Authority> authority;
 	
 	@OneToOne(mappedBy = "user")

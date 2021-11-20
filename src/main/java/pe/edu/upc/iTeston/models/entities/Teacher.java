@@ -58,7 +58,6 @@ public class Teacher {
 	private Course course; // course_id
 	
 	@OneToOne
-	@JoinColumn(name = "user_id")
 	private User user;
 	
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
@@ -96,6 +95,14 @@ public class Teacher {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getLastname() {

@@ -17,7 +17,6 @@ import javax.persistence.Table;
 public class Authority {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "authority_id")
 	private long id;
 
 	@Column(name = "role",length = 30, nullable = false)

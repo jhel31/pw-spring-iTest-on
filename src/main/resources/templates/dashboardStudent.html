@@ -35,11 +35,11 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			<div>
 				<img src="/images/logodark.png" class="logo" alt="">
 			</div>
-			<a th:href="@{/inicio-estudiante}"><i class="fas fa-desktop"></i><span>Inicio</span></a> 
-			<a th:href="@{/perfil-estudiante}"><i class="fas fa-user"></i><span>Perfil</span></a> 
-			<a th:href="@{/careers/simulacro}"><i class="fas fa-book"></i><span>Simulacros</span></a> 
-			<a th:href="@{/quizzes/misnotas}"><i class="fas fa-folder"></i><span>Mis notas</span></a>
-			<a th:href="@{/premium}"><i class="fas fa-star"></i><span>Obtener Premium</span></a>
+			<a sec:authorize="hasRole('STUDENT')" th:href="@{/inicio-estudiante}"><i class="fas fa-desktop"></i><span>Inicio</span></a> 
+            <a sec:authorize="hasRole('STUDENT')" th:href="@{/perfil-estudiante}"><i class="fas fa-user"></i><span>Perfil</span></a> 
+            <a sec:authorize="hasRole('STUDENT')" th:href="@{/careers/simulacro}"><i class="fas fa-book"></i><span>Simulacros</span></a> 
+            <a sec:authorize="hasRole('STUDENT')" th:href="@{/quizzes/misnotas}"><i class="fas fa-folder"></i><span>Mis notas</span></a>
+            <a sec:authorize="hasRole('STUDENT')" th:href="@{/premium}"><i class="fas fa-star"></i><span>Obtener Premium</span></a>
 		</div>
 	
 	</div>

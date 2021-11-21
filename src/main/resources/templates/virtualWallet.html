@@ -1,58 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" xmlns:th ="http://www.thymeleaf.org">
-  <head th:replace="dashboardTeacher :: frag-head(~{::title})">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="dashboardTeacher :: frag-head(~{::title})">
 
-    <title>Saldo Actual</title>
-    
-  </head>
-  <body>
-    
-    <div th:replace="dashboardTeacher :: frag-sidebar">
-      
-    </div>
-    <!--side bar end-->
+<title>Saldo Actual</title>
 
-    <div class="content">
-      <div class="container">
-      	<div class="row">
-			<div class="card" style=" margin-top: 5rem;">
-				<h1>Saldo Actual</h1>
-			</div>
-		</div>
-	
-		
-		<div class="row">
-			<div class="card">
-			  <h5 class="card-header">Balance</h5>
-			  <div class="card-body">
-			    
-				<div class="card text-center">
-				  <div class="card-header">
-				    Octubre
-				  </div>
-				  <div class="card-body">
-				    <p class="card-text">Tus ganancias de este mes son:</p>
-				    <h5 class="card-title">S/. 100.00</h5>
-				    
-				  </div>
-				  <div class="card-footer text-muted">
-				    Ultimo pago hace 8 dias
-				  </div>
+</head>
+<body>
+
+	<div th:replace="dashboardTeacher :: frag-sidebar"></div>
+	<!--side bar end-->
+
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="card" style="margin-top: 5rem;">
+					<h1>Saldo Actual</h1>
 				</div>
-				
-			  </div>
-			  <div class = "align-self-center">
-			    <a th:href="@{/retirar}"class="btn btn-primary" style="width: 100px; ">retirar</a>
-			  </div>
-			
 			</div>
-			
+
+
+			<div class="row">
+				<div class="card">
+					<h5 class="card-header">Balance</h5>
+					<div class="card-body">
+
+						<div class="card text-center">
+
+							<div class="card-body">
+								<p class="card-text">Tus ganancias de este mes son:</p>
+								<h5 class="card-title" th:text="${saldo}"></h5>
+							</div>
+						</div>
+					</div>
+						<div class="align-self-center" >
+							<form  th:object="${walletRetiro}" method="post">
+								<div class="mb-3" style="width: 100px">
+									<label for="formControlInput" class="form-label"></label> 
+										
+									<input  type="text" class="form-control" aria-label="Sizing example input" 
+									aria-describedby="inputGroup-sizing-default" >
+								</div>
+							</form>
+						</div>
+						<div class="align-self-center">
+							<a class="btn btn-primary" style="width: 100px;">retirar</a>
+						</div>
+				</div>
+
+
+			</div>
+
 
 		</div>
-		 
-		
-      </div>
-    </div>
+	</div>
 	<footer th:replace="dashboardTeacher :: frag-footer"></footer>
-  </body>
+</body>
 </html>

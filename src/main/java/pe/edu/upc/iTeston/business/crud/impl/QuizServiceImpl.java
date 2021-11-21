@@ -15,21 +15,15 @@ public class QuizServiceImpl implements QuizService {
 
 	@Autowired
 	private QuizRepository quizRepository;
-	
 
 	@Override
 	public JpaRepository<Quiz, String> getJpaRepository() {
-		
 		return quizRepository;
 	}
 
-
 	@Override
-	public List<Quiz> findByUniversityId(String id) throws Exception {
-		
-		return quizRepository.findByUniversityId(id);
-	}
+    public List<Quiz> findByUniversityId(String id) throws Exception {
 
-	
-
+        return quizRepository.findByUniversityId(id);
+    }	
 }

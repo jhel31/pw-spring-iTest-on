@@ -15,39 +15,39 @@ import pe.edu.upc.iTeston.business.crud.UniversityService;
 import pe.edu.upc.iTeston.models.entities.Career;
 import pe.edu.upc.iTeston.models.entities.Quiz;
 import pe.edu.upc.iTeston.models.entities.University;
-	
+
 @Controller
 @RequestMapping("/careers")
 @SessionAttributes("career")
 
 public class CareerController {
-	@Autowired
-	private CareerService careerService;
-	@Autowired
-	private UniversityService universityService; 
-	@Autowired
-	private QuizService quizService; 
-	
-	@GetMapping("simulacro")
-	public String listCareers(Model model) {
-		try {
-			
-			List<University> universities = universityService.getAll();
-			model.addAttribute("universities", universities);
-			//model.addAttribute("university", new University());
-			
-			List<Career> careers = careerService.getAll();
-			model.addAttribute("careers", careers);
-			model.addAttribute("career", new Career());
-			
-			List<Quiz> quizes = quizService.getAll();
-			model.addAttribute("quizes",quizes);
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "careers/list";
-	}
-	
+    @Autowired
+    private CareerService careerService;
+    @Autowired
+    private UniversityService universityService; 
+    @Autowired
+    private QuizService quizService; 
+
+    @GetMapping("simulacro")
+    public String listCareers(Model model) {
+        try {
+
+            List<University> universities = universityService.getAll();
+            model.addAttribute("universities", universities);
+            //model.addAttribute("university", new University());
+
+            List<Career> careers = careerService.getAll();
+            model.addAttribute("careers", careers);
+            model.addAttribute("career", new Career());
+
+            List<Quiz> quizes = quizService.getAll();
+            model.addAttribute("quizes",quizes);
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "careers/list";
+    }
+
 }

@@ -6,7 +6,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/DBiTest-on
     
     username: postgres
+<<<<<<< HEAD
+    password: tonPosSQL1
+=======
     password: postgresql2021
+>>>>>>> main
   jpa:
     database: postgresql
     hibernate:

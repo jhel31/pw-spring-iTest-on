@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -57,22 +58,34 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 //				.logoutSuccessUrl("/");
 //	}
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		http.csrf().disable()
-//			.authorizeRequests()
-//				.antMatchers("/inicio-estudiante/**").hasRole("STUDENT")
-//				.antMatchers("/inicio-docente/**").hasRole("TEACHER")
-//			.and()
-//			.formLogin();
-//				.loginProcessingUrl("/signin")
-//				.loginPage("/login").permitAll()
-//				.usernameParameter("username")
-//				.passwordParameter("password")
-//			.and()
-//			.logout()
-//				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//				.logoutSuccessUrl("/");	
-//	}
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable()
+			.authorizeRequests() 
+			.antMatchers("/").permitAll()
+			  .antMatchers("/inicio-estudiante/**").hasRole("STUDENT")
+		      .antMatchers("/perfil-estudiante/**").hasRole("STUDENT")
+		      .antMatchers("/careers/simulacro/**").hasRole("STUDENT")
+		      .antMatchers("/quizzes/misnotas/**").hasRole("STUDENT")
+		      .antMatchers("/premium/**").hasRole("STUDENT")
+		      .antMatchers("/inicio-docente/**").hasRole("TEACHER")
+		      .antMatchers("/perfil-docente/**").hasRole("TEACHER")
+		      .antMatchers("/saldo/**").hasRole("TEACHER")
+		      .antMatchers("/mis-balotarios/**").hasRole("TEACHER")
+		      .antMatchers("/nuevo-balotario/**").hasRole("TEACHER")
+			.and()
+			.formLogin()
+				.loginProcessingUrl("/signin")
+				.loginPage("/login").permitAll()
+				.usernameParameter("username")
+				.passwordParameter("password")
+			.and()
+			.logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/");	
+	}
+
+	
 	
 }

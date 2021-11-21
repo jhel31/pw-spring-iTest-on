@@ -11,16 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "authorities", uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "authority" }) })
+@Table(name = "authorities")
 public class Authority {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(length = 30, nullable = false)
+	@Column(name = "role",length = 30, nullable = false)
 	private String authority;
 
 	@ManyToOne(cascade = CascadeType.ALL)

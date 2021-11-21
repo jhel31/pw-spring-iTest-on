@@ -1,15 +1,14 @@
 package pe.edu.upc.iTeston.models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.Index;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,13 +17,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "users", indexes = { @Index(columnList = "username", name = "user_index_username") })
+@Table(name = "users")
 public class User {
 	// EmbeddedId primary key
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "user_id", columnDefinition = "Numeric(6)")
-	private Integer id;
+	@Column(name = "user_id", length = 30, nullable = false)
+	private String id;
 
 	@NotNull
 	@NotBlank
@@ -41,9 +39,8 @@ public class User {
 	@Column(name = "enable")
 	private Boolean enable;
 
-	@OneToMany
-	@JoinColumn(name = "user")
-	private List<Authority> authority;
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Authority> authorities;
 	
 	@OneToOne(mappedBy = "user")
 	private Student student; // virtualWallet
@@ -51,11 +48,11 @@ public class User {
 	@OneToOne(mappedBy = "user")
 	private Teacher teacher; 
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -83,17 +80,17 @@ public class User {
 		this.enable = enable;
 	}
 
-	public List<Authority> getAuthority() {
-		return authority;
+	public List<Authority> getAuthorities() {
+		return authorities;
 	}
 
-	public void setAuthority(List<Authority> authority) {
-		this.authority = authority;
+	public void setAuthorities(List<Authority> authorities) {
+		this.authorities = authorities;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(authority, enable, id, password, username);
+		return Objects.hash(authorities, enable, id, password, username);
 	}
 
 	@Override
@@ -105,19 +102,19 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(authority, other.authority) && Objects.equals(enable, other.enable)
+		return Objects.equals(authorities, other.authorities) && Objects.equals(enable, other.enable)
 				&& Objects.equals(id, other.id) && Objects.equals(password, other.password)
 				&& Objects.equals(username, other.username);
 	}
 
-	public User(Integer id, @NotNull @NotBlank @Size(max = 30) String username,
+	public User(String id, @NotNull @NotBlank @Size(max = 30) String username,
 			@NotNull @NotBlank @Size(max = 60) String password, Boolean enable, List<Authority> authority) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.enable = enable;
-		this.authority = authority;
+		this.authorities = authority;
 	}
 
 	public User() {
@@ -127,18 +124,26 @@ public class User {
 
 	public User(@NotNull @NotBlank @Size(max = 30) String username, @NotNull @NotBlank @Size(max = 60) String password,
 			Student student) {
-		super();
+		this.id=student.getId();
 		this.username = username;
 		this.password = password;
+		this.enable = true;
 		this.student = student;
+		this.authorities = new ArrayList<>();
+		student.setUser(this);
+		
 	}
 
 	public User(@NotNull @NotBlank @Size(max = 30) String username, @NotNull @NotBlank @Size(max = 60) String password,
 			Teacher teacher) {
-		super();
+		this.id=teacher.getId();
 		this.username = username;
 		this.password = password;
+		this.enable = true;
 		this.teacher = teacher;
+		this.authorities = new ArrayList<>();
+		teacher.setUser(this);
+		
 	}
 
 	public User(@NotNull @NotBlank @Size(max = 30) String username,
@@ -148,5 +153,11 @@ public class User {
 		this.password = password;
 	}
 	
+	public void addAuthority(String auth) {
+		Authority authority = new Authority();
+		authority.setAuthority(auth);
+		authority.setUser(this);
+		this.authorities.add( authority );
+	}
 	
 }

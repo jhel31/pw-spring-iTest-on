@@ -57,7 +57,6 @@ public class Student {
 	private List<Subscription> subscriptions;
 	
 	@OneToOne
-	@JoinColumn(name = "user_id")
 	private User user;
 
 	public String getId() {

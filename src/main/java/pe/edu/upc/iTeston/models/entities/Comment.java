@@ -88,20 +88,6 @@ public class Comment {
 		return Objects.hash(date, description, id, questionBank, student);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Comment other = (Comment) obj;
-		return Objects.equals(date, other.date) && Objects.equals(description, other.description)
-				&& Objects.equals(id, other.id) && Objects.equals(questionBank, other.questionBank)
-				&& Objects.equals(student, other.student);
-	}
-
 	public Student getStudent() {
 		return student;
 	}
@@ -117,5 +103,21 @@ public class Comment {
 	public void setQuestionBank(QuestionBank questionBank) {
 		this.questionBank = questionBank;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Comment other = (Comment) obj;
+		return Objects.equals(date, other.date) && Objects.equals(description, other.description)
+				&& Objects.equals(id, other.id) && Objects.equals(questionBank, other.questionBank)
+				&& Objects.equals(student, other.student);
+	}
+
+
 
 }

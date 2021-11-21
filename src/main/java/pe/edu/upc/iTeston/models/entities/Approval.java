@@ -82,6 +82,23 @@ public class Approval {
 	public void setApprovalDate(Date approvalDate) {
 		this.approvalDate = approvalDate;
 	}
+	
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public QuestionBank getQuestionBank() {
+		return questionBank;
+	}
+
+	public void setQuestionBank(QuestionBank questionBank) {
+		this.questionBank = questionBank;
+	}
 
 	@Override
 	public int hashCode() {
@@ -102,21 +119,6 @@ public class Approval {
 				&& Objects.equals(student, other.student);
 	}
 
-	public Student getStudent() {
-		return student;
-	}
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public QuestionBank getQuestionBank() {
-		return questionBank;
-	}
-
-	public void setQuestionBank(QuestionBank questionBank) {
-		this.questionBank = questionBank;
-	}
-	
 
 }

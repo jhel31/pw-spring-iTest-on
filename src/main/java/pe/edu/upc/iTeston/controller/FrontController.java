@@ -26,12 +26,18 @@ public class FrontController {
 	public String landingTeacher() {
 		return "landingTeacher";
 	}
-
+	
+	@GetMapping("login")	// request
+	public String login() {
+		return "login";
+	}
+	
 	@GetMapping("nuevo-balotario")
 	public String newQuestionBank() { // quitar
 		return "newQuestionBank";
 	}
 
+	
 	@GetMapping("mis-balotarios")
 
 
@@ -41,22 +47,26 @@ public class FrontController {
 		return "allQuestionBanks";
 	}
 
+	
 	@GetMapping("inicio-estudiante")
 	public String landingEstudiante() {
 		return "landingEstudiante";
 	}
 
+	
 	@GetMapping("premium")
 	public String planPremium() { 
 		return "planPremium";
 	}
 
+	
 	@GetMapping("pago")
 	public String creditCard() { // quitar
 		
 		return "creditCard";
 	}
 
+	
 	@GetMapping("retirar")
 	public String gainTeacher() { // quitar
 		return "gainTeacher";
@@ -93,4 +103,7 @@ public class FrontController {
 	public String studentProfile() {
 		return "studentProfile";
 	}
+	
+	
+
 }

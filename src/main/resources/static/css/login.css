@@ -1,0 +1,13 @@
+.bgForm{
+	background: url("/Images/premiumImage.jpg")no-repeat;
+	background-size: cover;
+}
+
+.loginCard{
+	padding: 1.5rem;
+	text-align: center;
+	margin: 200px auto 100px;
+}
+body{
+	font-family: "Poppins", sans-serif;
+}

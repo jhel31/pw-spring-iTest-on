@@ -4,18 +4,51 @@
 <head>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" > 
+<!-- we're including bootstrap -->
+	 <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon.ico">
     <title>Login Page</title>
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
-<div class="form">
-    <p>Login</p>
-    <form th:action="@{/signin}" method="post">
-        <input type="text" name="username" id="username" placeholder="username">
-        <input type="password" name="password" id="password" placeholder="password">
-        <button type="submit">login</button>
-        <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+    <div class="card">
+		<div class="card-header">
+		  <h2>Bienvenido!</h2>
+		</div>
+		<div class="card-body">
+		<form th:action="@{/signin}" method="post">
+			  <div class="mb-3">
+			    <label for="username" class="form-label">Nombre de usuario</label>
+			    <input type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario">
+			  </div>
+			  <div class="mb-3">
+			    <label for="password" class="form-label">Password</label>
+			    <input type="password" class="form-control" name="password" id="password" placeholder="password">
+			  </div>        
+	        <button type="submit" class="btn btn-primary">Login</button>
+	        <p class="message">No registrado?<a href="#">Crear una nueva cuenta</a></p>
+	    
+	    </form>
+		</div>
+    </div>
+	    
+	    
+	    
+    </div>
+    <div class="col-6 bgForm"></div>
+  </div>
 </div>
+
+
+
 </body>
 </html> 

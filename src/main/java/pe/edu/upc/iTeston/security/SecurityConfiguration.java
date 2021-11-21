@@ -57,5 +57,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 //				.logoutSuccessUrl("/");
 //	}
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http.csrf().disable()
+//			.authorizeRequests()
+//				.antMatchers("/inicio-estudiante/**").hasRole("STUDENT")
+//				.antMatchers("/inicio-docente/**").hasRole("TEACHER")
+//			.and()
+//			.formLogin();
+//				.loginProcessingUrl("/signin")
+//				.loginPage("/login").permitAll()
+//				.usernameParameter("username")
+//				.passwordParameter("password")
+//			.and()
+//			.logout()
+//				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//				.logoutSuccessUrl("/");	
+//	}
 	
 }

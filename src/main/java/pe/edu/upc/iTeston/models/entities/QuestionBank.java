@@ -173,25 +173,7 @@ public class QuestionBank {
 	
 	
 	
-	public Integer getQuantityExercise(){//Cantidad de ejercicios
 
-		return exercises.size();
-	}
-	
-	
-	public float getPromApprovals() {
-		int suma=0;
-		float promedio=0;
-		for(int i=0; i<approvals.size(); i++) {//propiedad de cantidad de aprobación, recorre datos
-			suma+=approvals.get(i).getApprovalLevel();
-			promedio=(suma/approvals.size());
-		}
-		return promedio;
-	}
-	
-
-	
-	
 	
 	
 	

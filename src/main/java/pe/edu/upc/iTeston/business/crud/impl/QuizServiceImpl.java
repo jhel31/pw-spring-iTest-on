@@ -25,5 +25,10 @@ public class QuizServiceImpl implements QuizService {
     public List<Quiz> findByUniversityId(String id) throws Exception {
 
         return quizRepository.findByUniversityId(id);
-    }	
+    }
+
+	@Override
+	public List<Quiz> findBySubscriptionStudentId(String id) throws Exception {
+		return quizRepository.findBySubscriptionStudentId(id);
+	}	
 }

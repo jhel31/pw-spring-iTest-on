@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th ="http://www.thymeleaf.org">
+  <head th:replace="dashboardTeacher :: frag-head(~{::title})">
+
+    <title>Mis Balotarios</title>
+    
+  </head>
+  <body>
+    
+    <div th:replace="dashboardTeacher :: frag-sidebar">
+      
+    </div>
+    <!--side bar end-->
+
+    <div class="content">
+      <div class="container">
+      	<div class="row">
+			<div class="card" style=" margin-top: 5rem;">
+					  
+				<h1>Mis Balotarios</h1>
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="card">
+			
+			  <h5 class="card-header">Todos tus balotarios</h5>
+			  <div class="card-body table-responsive">
+			    <table class="table">
+		
+				  <thead>
+				    <tr>
+				      <th scope="col">Id</th>
+				      <th scope="col">Descripcion</th>
+				      <th scope="col">Fecha de creacion</th>
+				      <th scope="col">Numero de ejercicios</th>
+				      <th scope="col">Promedio de aprobacion</th>
+				      <th scope="col">Comentarios</th>
+				      <th scope="col">Accion</th>
+				     	     
+				    </tr>
+				  </thead>
+				  <tbody>
+				  
+				  
+				  
+				  
+				  
+				  	<tr th:each="questionBk : ${questionBanks}">
+       				<td th:text="${questionBk.id}">Id</td>
+      				<td th:text="${questionBk.description}">Descripcion</td>
+      		      	<td th:text="${questionBk.creationDate}">Fecha de creacion</td>
+      				<td th:text="${questionBk.exercises}">Numero de ejercicios </td>
+      				<td th:text="${questionBk.comments}">Comentarios </td>
+      				<td th:text="${questionBk.approvals}">Promedio de aprobación </td>
+				  	<td> th:href="${'questionBanks/'+ questionBk.id+'/edit' }" class="btn btn-primary">Editar</td>
+				  	<td> th:href="${'questionBanks/'+ questionBk.id+'/delet' }" class="btn btn-primary">Editar</td>
+				  	
+				  	</tr>
+				 
+				 
+				 
+				 
+				 
+					<tr>
+					
+				      <th scope="row">1</th>
+				      <td>Balotario de razonamiento verbal</td>
+				      <td>27/09/2021</td>
+				      <td>10</td>
+				      <td>3</td>
+				      <td>
+						<a href="#" class="btn btn-primary">Ver comentarios</a>
+				      </td>
+				     <td>
+				     <a href="#" class="btn btn-primary">Editar</a>
+				     <a href="#" class="btn btn-warning">Eliminar</a>
+				      </td>
+				    </tr>
+				    	    
+				    <tr>
+				      <th scope="row">2</th>
+				      <td>Balotario de Lenguaje</td>
+				      <td>22/09/2021</td>
+				      <td>11</td>
+				      <td>3</td>
+				      <td>Wauuuuuuuuuuuu</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">3</th>
+				      <td>Balotario de Literatura</td>
+				      <td>11/09/2021</td>
+				      <td>12</td>
+				      <td>3</td>
+				      <td>Wauuuuuuuuuuuu</td>
+				    </tr>
+				       <tr>
+				      <th scope="row">4</th>
+				      <td>Balotario de Literatura</td>
+				      <td>11/09/2021</td>
+				      <td>12</td>
+				      <td>3</td>
+				      <td>Wauuuuuuuuuuuu</td>
+				    </tr>
+				       <tr>
+				      <th scope="row">5</th>
+				      <td>Balotario de Literatura</td>
+				      <td>11/09/2021</td>
+				      <td>12</td>
+				      <td>3</td>
+				      <td>Wauuuuuuuuuuuu</td>
+				    </tr>
+				    
+				    
+				
+				    
+			
+
+
+				  </tbody>
+				</table>
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				     <li class="page-item"><a class="page-link" href="#">4</a></li>
+				    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+				  </ul>
+				</nav>
+			  </div>
+			</div>
+		</div>
+		
+      </div>
+    </div>
+	<footer th:replace="dashboardTeacher :: frag-footer"></footer>
+  </body>
+</html>

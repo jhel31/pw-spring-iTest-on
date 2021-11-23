@@ -20,8 +20,8 @@ public class LoginService {
 	public LoginService(TeacherRepository teacherRepository, StudentRepository studentRepository) {
 		this.teacherRepository = teacherRepository;
 		this.studentRepository = studentRepository;
-//		teacher = teacherRepository.findById("TEA01").get();
-//		student = studentRepository.findById("ST01").get();
+		teacher = teacherRepository.findById("TEA01").get();
+		student = studentRepository.findById("ST01").get();
 	}
 
 	public Teacher getTeacher() {

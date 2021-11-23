@@ -26,7 +26,7 @@ public class InitUser implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
+	BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 //		Optional<Student> optional = studentRepository.findById("ST01");
 //		if(optional.isPresent()) {
 //			Student student = optional.get();

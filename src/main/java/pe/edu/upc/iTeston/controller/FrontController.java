@@ -3,6 +3,8 @@ package pe.edu.upc.iTeston.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,12 +21,34 @@ public class FrontController {
 
 	@Autowired
 	private LoginService loginService;
-	@Autowired //injeccion de dependencias
+	@Autowired // injeccion de dependencias
 	private QuestionBankService questionBankService;
-	@Autowired
+
+	@GetMapping("inicio") // request
+	public String landing() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		boolean hasTeacherRole = authentication.getAuthorities().stream()
+				.anyMatch(r -> r.getAuthority().equals("ROLE_TEACHER"));
+		boolean hasStudentRole = authentication.getAuthorities().stream()
+				.anyMatch(r -> r.getAuthority().equals("ROLE_STUDENT"));
+		System.out.println(hasTeacherRole);
+		System.out.println(hasStudentRole);
+		if (hasTeacherRole)
+			return "landingTeacher";
+		else
+			return "landingEstudiante";
+		
+	}
+
 	@GetMapping("inicio-docente") // request
 	public String landingTeacher() {
 		return "landingTeacher";
+	}
+
+	@GetMapping("inicio-estudiante")
+	public String landingEstudiante() {
+		return "landingEstudiante";
 	}
 
 	@GetMapping("nuevo-balotario")
@@ -34,26 +58,20 @@ public class FrontController {
 
 	@GetMapping("mis-balotarios")
 
-
 	public String allQuestionBanks(Model model) throws Exception {
 		List<QuestionBank> questionBanks = questionBankService.getAll();
 		model.addAttribute("questionBanks", questionBanks);
 		return "allQuestionBanks";
 	}
 
-	@GetMapping("inicio-estudiante")
-	public String landingEstudiante() {
-		return "landingEstudiante";
-	}
-
 	@GetMapping("premium")
-	public String planPremium() { 
+	public String planPremium() {
 		return "planPremium";
 	}
 
 	@GetMapping("pago")
 	public String creditCard() { // quitar
-		
+
 		return "creditCard";
 	}
 
@@ -79,6 +97,7 @@ public class FrontController {
 		model.addAttribute("saldo", saldo);
 		return "virtualWallet";
 	}
+
 	@GetMapping("suscripcionRealizada")
 	public String viewSuscription() {
 		return "viewSuscription";
@@ -93,4 +112,5 @@ public class FrontController {
 	public String studentProfile() {
 		return "studentProfile";
 	}
+
 }

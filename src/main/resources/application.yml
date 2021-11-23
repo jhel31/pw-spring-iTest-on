@@ -1,12 +1,20 @@
 server:
+<<<<<<< HEAD
   port: 10011 
+=======
+  port: 12000
+>>>>>>> main
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/DBiTest-on
     
     username: postgres
+<<<<<<< HEAD
     password: tonPosSQL1
+=======
+    password: 9oe4qvf9
+>>>>>>> main
   jpa:
     database: postgresql
     hibernate:

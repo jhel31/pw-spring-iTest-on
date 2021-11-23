@@ -45,7 +45,7 @@ public class QuizController {
 	@GetMapping("misnotas")
 	public String list(Model model) {
 		try {
-			List<Quiz> quizes = quizService.getAll();
+			List<Quiz> quizes = quizService.findBySubscriptionStudentId(loginService.getStudent().getId());
 			model.addAttribute("quizes",quizes);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -60,13 +60,12 @@ public class QuizController {
 
                 List<Quiz> quizes = quizService.findByUniversityId(id);
                 model.addAttribute("quizes",quizes);
-                model.addAttribute("quizes", new Quiz());
-                List<QuestionBank> questionBanks =  questionService.getAll();
+                List<QuestionBank> questionBanks =  questionService.findByQuizUniversityId(id);
         		
         		model.addAttribute("comment",new Comment());
         		model.addAttribute("questionBanks", questionBanks);
 
-        } catch (Exception e) {
+        } catch (Exception e) {	
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

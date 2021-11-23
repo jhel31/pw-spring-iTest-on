@@ -5,30 +5,33 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import pe.edu.upc.iTeston.auth.handler.LoginSuccessHandler;
 
 @Configuration
-@EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
-	
+	@Autowired
+	private LoginSuccessHandler loginSuccessHandler;
+
 	@Bean
 	PasswordEncoder passwordEnconder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
 		daoAuthenticationProvider.setUserDetailsService(myUserDetailsService);
-		daoAuthenticationProvider.setPasswordEncoder(passwordEnconder());		
-		
+		daoAuthenticationProvider.setPasswordEncoder(passwordEnconder());
+
 		return daoAuthenticationProvider;
 	}
 
@@ -37,55 +40,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.authenticationProvider(authenticationProvider());
 	}
 
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		http.csrf().disable()
-//			.authorizeRequests()
-//				.antMatchers("/").permitAll()
-//				.antMatchers("/apply/**").hasRole("EMPLOYEE")
-//				.antMatchers("/hiring/**").hasAnyRole("EMPLOYEE", "HUMANRESOURCE")
-//				.antMatchers("/upgrade/**").hasRole("HUMANRESOURCE")
-//				.antMatchers("/search/**").authenticated()
-//				.antMatchers("/api/v1/**").permitAll()
-//			.and()
-//			.formLogin()
-//				.loginProcessingUrl("/signin")
-//				.loginPage("/login").permitAll()
-//				.usernameParameter("username")
-//				.passwordParameter("password")
-//			.and()
-//			.logout()
-//				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//				.logoutSuccessUrl("/");
-//	}
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable()
-			.authorizeRequests() 
-			.antMatchers("/").permitAll()
-			  .antMatchers("/inicio-estudiante/**").hasRole("STUDENT")
-		      .antMatchers("/perfil-estudiante/**").hasRole("STUDENT")
-		      .antMatchers("/careers/simulacro/**").hasRole("STUDENT")
-		      .antMatchers("/quizzes/misnotas/**").hasRole("STUDENT")
-		      .antMatchers("/premium/**").hasRole("STUDENT")
-		      .antMatchers("/inicio-docente/**").hasRole("TEACHER")
-		      .antMatchers("/perfil-docente/**").hasRole("TEACHER")
-		      .antMatchers("/saldo/**").hasRole("TEACHER")
-		      .antMatchers("/mis-balotarios/**").hasRole("TEACHER")
-		      .antMatchers("/nuevo-balotario/**").hasRole("TEACHER")
-			.and()
-			.formLogin()
-				.loginProcessingUrl("/signin")
-				.loginPage("/login").permitAll()
-				.usernameParameter("username")
-				.passwordParameter("password")
-			.and()
-			.logout()
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/");	
+		http.authorizeRequests().antMatchers("/").permitAll()
+		.antMatchers("/inicio-estudiante/**").access("hasRole('ROLE_STUDENT')")
+		.antMatchers("/perfil-estudiante/**").access("hasRole('ROLE_STUDENT')")
+		.antMatchers("/careers/simulacro/**").access("hasRole('ROLE_STUDENT')")
+		.antMatchers("/quizzes/misnotas/**").access("hasRole('ROLE_STUDENT')")
+		.antMatchers("/premium/**").access("hasRole('ROLE_STUDENT')")
+		.antMatchers("/inicio-docente/**").access("hasRole('ROLE_TEACHER')")
+		.antMatchers("/perfil-docente/**").access("hasRole('ROLE_TEACHER')")
+		.antMatchers("/saldo/**").access("hasRole('ROLE_TEACHER')")
+		.antMatchers("/mis-balotarios/**").access("hasRole('ROLE_TEACHER')")
+		.antMatchers("/nuevo-balotario/**").access("hasRole('ROLE_TEACHER')")
+		.antMatchers("/logout").permitAll()
+		
+				.and().formLogin().successHandler(loginSuccessHandler).loginPage("/login").loginProcessingUrl("/signin")
+				.defaultSuccessUrl("/inicio").permitAll().and().logout().logoutSuccessUrl("/login")
+				.permitAll().and().exceptionHandling().accessDeniedPage("/error_403");
 	}
 
-	
-	
 }

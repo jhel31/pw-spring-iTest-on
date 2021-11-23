@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface QuizRepository extends JpaRepository<Quiz, String> {
 	List<Quiz> findByUniversityId(String id) throws Exception;
+	
+	List<Quiz> findBySubscriptionStudentId(String id) throws Exception;
 }

@@ -54,6 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.antMatchers("/mis-balotarios/**").access("hasRole('ROLE_TEACHER')")
 		.antMatchers("/nuevo-balotario/**").access("hasRole('ROLE_TEACHER')")
 		.antMatchers("/logout").permitAll()
+		.antMatchers("/quizSave").permitAll()
 		
 				.and().formLogin().successHandler(loginSuccessHandler).loginPage("/login").loginProcessingUrl("/signin")
 				.defaultSuccessUrl("/inicio").permitAll().and().logout().logoutSuccessUrl("/login")

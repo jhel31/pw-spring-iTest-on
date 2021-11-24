@@ -1,12 +1,12 @@
 server:
-  port: 12000
+  port: 8091
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/DBiTest-on
     
     username: postgres
-    password: 9oe4qvf9
+    password: mimo0408
   jpa:
     database: postgresql
     hibernate:

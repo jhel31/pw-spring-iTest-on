@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:fragment="frag-head(title)">
+<head th:replace="dashboardStudent :: frag-head(~{::title})">
 
-<meta charset="utf-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-<!-- we're including bootstrap -->
-<link rel="icon" type="image/png" sizes="32x32"
-	href="/Images/favicon.ico">
-
-
+<title>Quiz Save</title>
 </head>
 <body>
-	<div th:fragment="frag-sidebar"></div>
-	<form th:action="@{/quizSave/saveNew}" th:object="${quizSave}" method="post">
-		<div class="form-group">
-			<label for="idrace">ID:</label> <input type="text"
-				class="form-control" th:field="*{idQuizzSave}" readonly></input> <label
-				for="idrace">ID Quiz:</label> <input type="text"
-				class="form-control" th:field="*{quizz.id}" readonly></input>
-			
-			<table class="table table-bordered table-hover table-striped"
-				id="tab_logic">
-				<thead>
-					<tr>
-						<th class="text-center">Pregunta</th>
-						<th class="text-center">1</th>
-						<th class="text-center">2</th>
-						<th class="text-center">3</th>
-						<th class="text-center">4</th>
-						<th class="text-center">5</th>
-						<th class="text-center">Respuesta</th>
-				</thead>
-				<tbody>
-					<tr th:each="r, itemStat: *{results}">
-						<td th:text="*{results[__${itemStat.index}__].exercise.statement}"></td>
-						<td th:text="*{results[__${itemStat.index}__].exercise.correctAlternative}"></td>
-						<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative1}"></td>
-						<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative2}"></td>
-						<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative3}"></td>
-						<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative4}"></td>
-						<td th:text="*{results[__${itemStat.index}__].result}"></td>
-					</tr>
-				</tbody>
-
-			</table>
+	<div th:replace="dashboardStudent :: frag-sidebar"></div>
+	
+	<div class="content">
+	<div class="container">
+      	<div class="row">
+			<div class="card" style=" margin-top: 5rem;">
+				<h1>Comenzar simulacro</h1>
+			</div>
 		</div>
+		
+		<!-- -->
+		
+		<div class="row">
+				<form th:action="@{/quizSave/saveNew}" th:object="${quizSave}" method="post">
+					<div class="form-group">
+						<label for="idrace">ID:</label> <input type="text"
+							class="form-control" th:field="*{idQuizzSave}" readonly></input> <label
+							for="idrace">ID Quiz:</label> <input type="text"
+							class="form-control" th:field="*{quizz.id}" readonly></input>
+						
+						<table class="table table-bordered table-hover table-striped"
+							id="tab_logic">
+							<thead>
+								<tr>
+									<th class="text-center">Pregunta</th>
+									<th class="text-center">1</th>
+									<th class="text-center">2</th>
+									<th class="text-center">3</th>
+									<th class="text-center">4</th>
+									<th class="text-center">5</th>
+									<th class="text-center">Respuesta</th>
+							</thead>
+							<tbody>
+								<tr th:each="r, itemStat: *{results}">
+									<td th:text="*{results[__${itemStat.index}__].exercise.statement}"></td>
+									<td th:text="*{results[__${itemStat.index}__].exercise.correctAlternative}"></td>
+									<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative1}"></td>
+									<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative2}"></td>
+									<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative3}"></td>
+									<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative4}"></td>
+									<td th:text="*{results[__${itemStat.index}__].result}"></td>
+								</tr>
+							</tbody>
+			
+						</table>
+					</div>
+			
+					<button type="submit" class="btn btn-primary">Aceptar</button>
+			
+				</form>
+		</div>
+		 
+		
+      </div>
 
-		<button type="submit" class="btn btn-primary">Aceptar</button>
-
-	</form>
-	<footer th:fragment="frag-footer">
+	</div>
+	<footer th:replace="frag-footer">
 		<script src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script>
 		<script>
 	      window.dataLayer = window.dataLayer || [];

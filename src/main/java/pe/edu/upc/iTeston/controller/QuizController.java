@@ -107,7 +107,46 @@ public class QuizController {
 		return "quizzes/showQuizz";
 	}
 	
-	
-	
+
+//	@GetMapping("restric-freemium")
+//    public String restricFreemium(Model model) {
+//        try {
+//            //esto debe ponerse en el método al finalizar el examen
+//            Student student =loginService.getStudent();
+//            List<Subscription> subscriptions = subscriptionService.getAll();
+//            List<Quiz> quizzes = quizService.getAll();
+//            int verificadorSubscription = 1;
+//            for (int i = 0; i < subscriptions.size(); i++) {
+//                if (student.getId() == subscriptions.get(i).getStudent().getId()) {
+//                    verificadorSubscription= 1;
+//                }
+//                else
+//                    verificadorSubscription= 0;
+//            }
+//
+//            for (int i = 0; i < quizzes.size(); i++) {
+//                if(quizzes.get(i).getSubscription().getStudent().getId() != student.getId()) {
+//                    if(verificadorSubscription == 1) {
+//                        student.getFreemium().setActive(true);
+//                    }
+//                    else
+//                        student.getFreemium().setActive(true);
+//                }
+//                else if(quizzes.get(i).getSubscription().getStudent().getId() == student.getId()) {
+//                    if(verificadorSubscription == 1) {
+//                        student.getFreemium().setActive(true);
+//                    }
+//                    else
+//                        student.getFreemium().setActive(false);
+//                }
+//
+//            }
+//
+//        } catch (Exception e) {
+//            // TODO: handle exception
+//        }
+//
+//        return "quizzes/showQuizz";
+//    }
 	
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pe.edu.upc.iTeston.business.crud.PaymentMethodService;
 import pe.edu.upc.iTeston.business.crud.StudentService;
 import pe.edu.upc.iTeston.business.crud.SubscriptionService;
 import pe.edu.upc.iTeston.models.entities.Student;
@@ -37,6 +38,8 @@ public class SubscriptionController {
 		try {
 			List<Subscription> subscriptions=subscriptionService.getAll();
 			model.addAttribute("subscriptions", subscriptions);
+			//model.addAttribute("paymentMethod", new PaymentMethodService());
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,12 +53,14 @@ public class SubscriptionController {
 	
 	@GetMapping("viewPago")//funcion que llega el view y subscriptionId
 	public String viewDataSubscription(Model model) throws Exception{
+		
+		
+		
 		List<Subscription> suscriptions =subscriptionService.getAll();
 		model.addAttribute("subscriptions", new Subscription());
 		
 		return ("viewSubscription");
 	}
-	
 	
 	
 	/*
@@ -77,10 +82,15 @@ public class SubscriptionController {
 
 	 * */
 	
-	
+	/*
 	@GetMapping("newPago")
-	public String newSubscription(Model model) {
+	public String newSubscription(Model model, @ModelAttribute("registeredSuscription") RegisteredSuscription registeredSuscription ) {
 		try {
+			int suscriptionDays=registeredSuscription.getSuscription();
+			//Date ActivateDateValid=plan
+			
+			
+			
 			List<Subscription> subscriptions = subscriptionService.getAll();
 			List<Student> students = studentService.getAll();
 			model.addAttribute("subscriptions", subscriptions);
@@ -91,7 +101,7 @@ public class SubscriptionController {
 		}		
 		return "viewSubscription";
 	}
-	
+	*/
 	
 	@PostMapping("saveNewPago")
 	public String saveNewPago(Model model, @Valid @ModelAttribute("Subscription") Subscription subscription, 
@@ -115,6 +125,32 @@ public class SubscriptionController {
 		return "viewSubscription";
 	}
 	
+	
+	
+	
+	/*
+	@PostMapping("saveNewPago")
+	public String saveNewPago(Model model, @Valid @ModelAttribute("Subscription") Subscription subscription, 
+			BindingResult result) {
+		if(result.hasErrors()) {
+	
+		}
+		System.out.println(subscription.getId());
+		System.out.println(subscription.getIssueDate());
+		System.out.println(subscription.getExpire());
+		
+		
+		
+		
+		try {
+			Subscription subscriptionSaved= subscriptionService.create(subscription);		
+			model.addAttribute("subscription", subscriptionSaved);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "viewSubscription";
+	}
+	*/
 	
 
 }

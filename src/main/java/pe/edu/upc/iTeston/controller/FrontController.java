@@ -54,12 +54,19 @@ public class FrontController {
 		return "planPremium";
 	}
 	
+	
+	
+	
 	//llama formulario de datos de pago
+/*
 	@GetMapping("pago")
 	public String creditCard() {
 		return "creditCard";
 		//return "viewSuscription";
 	}
+	
+	*/
+	
 	@GetMapping("suscripcionRealizada")
 	public String viewSuscription() {
 		return "viewSuscription";

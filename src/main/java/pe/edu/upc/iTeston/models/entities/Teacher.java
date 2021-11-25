@@ -152,13 +152,13 @@ public class Teacher {
 	public void setQuestionBanks(List<QuestionBank> questionBanks) {
 		this.questionBanks = questionBanks;
 	}
-
+/*
 	@Override
 	public int hashCode() {
 		return Objects.hash(course, documentExperience, email, id, lastname, name, questionBanks,
 				virtualWallet);
 	}
-
+*/
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -28,6 +28,9 @@ public class Subscription {
 	//fecha de vencimineto
 	private Date expire;
 	
+	
+	
+	
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_paymentMethods")
@@ -136,8 +139,20 @@ public class Subscription {
 		this.quizzes = quizzes;
 		this.plan = plan;
 	}
-
 	
+	
+	/*
+	public static boolean statusSubscription(Date today, Date expire) {
+		if(today.equals(expire)) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
+
+	*/
 	
 }
 

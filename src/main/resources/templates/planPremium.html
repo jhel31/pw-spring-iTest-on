@@ -9,7 +9,7 @@
     <div th:replace="dashboardStudent :: frag-sidebar">
       
     </div>
-    <!--side bar end-->
+    <!--Encabezado de preimum-->
 
     <div class="content">
       <div class="container">
@@ -18,9 +18,8 @@
 				<h1>Adquiere premium ahora</h1>
 			</div>
 		</div>
-		
-		<!-- -->
-		
+	
+	   <!--Descripciones-->
 		<div class="row">
 			<div class="card">
 			  <h5 class="card-header text-center">Planes disponibles</h5>
@@ -39,6 +38,9 @@
 				  </div>
 				  <div class="col-sm-6">
 				    <div class="card border-dark mb-3 text-center">
+				  
+				  
+				  
 				    <img src="/images/premiumImage.jpg" class="card-img-top" alt="...">
 				      <div class="card-body">
 				        <h4 class="card-title">Premium</h4>
@@ -63,10 +65,58 @@
 						    
 						  </li>
 						</ol>
-				       	<a th:href="@{/pago}" class="btn btn-primary">Adquirir ahora</a>
+				       	<a th:href="@{subscriptions}" 
+				       	class="btn btn-primary">Adquirir ahora</a>
 						
-				      </div>
-				    </div>
+						<div class="box-boton">
+								<button type="button" class="btn btn-primary" data-toggle="modal"    
+								data-target="obtener-premium" data-bs-toggle="button"
+								style="background-color: blue;">Adquirir plan de promoción
+								</button>
+						</div>
+						
+						
+						
+						<!--Modal de premium-credit card-->
+						<div class="modal fade obtener-premium" tabindex="-1" role="dialog"
+						aria-labelledly="myLargeModallabel" aria-hidden="true"> 
+						<div class ="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="emergence-contenido">
+									<div class="seccion-superior">
+										<h3>iTest-on
+										</h3>
+										</div>
+										<div class="seccion-medio">
+										<div class="descripcion-ventana">
+											<h3 th:text="'Entra a operar en Startup Invest,'+${name}">
+											</h3>
+										</div>
+									</div>
+									
+									
+									<!--row-->
+									<div class="row">
+										<div class="col-xs-6 col-sm-6 col-lg-6 col-xl-3 mt-2"
+										th:each="subscription:${subscriptions}">
+											<div class="panel price panel-color">
+											<div class="bg-white text-center">
+												<svg x="0" y="0" viewBox=" 0 0 360 220">
+													<g><path fill="blue" d="">
+													
+													</path>
+								
+												</svg>
+												</div>
+											</div>
+										</div>
+				    			  	</div>
+				    			  	
+				    			  
+				    			  	
+				    			  	
+				    			  	
+				   		</div>
 				  </div>
 				</div>
 			  	
@@ -79,4 +129,5 @@
     </div>
 	<footer th:replace="dashboardStudent  :: frag-footer"></footer>
   </body>
+  
 </html>

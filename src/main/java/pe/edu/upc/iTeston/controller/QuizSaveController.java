@@ -48,7 +48,6 @@ public class QuizSaveController {
 
 			model.addAttribute("quizSave", quizSave);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "quizSave";// html

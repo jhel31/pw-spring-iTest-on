@@ -143,6 +143,7 @@ public class QuestionBank {
 	public void setApprovals(List<Approval> approvals) {
 		this.approvals = approvals;
 	}
+	
 
 
 	public QuestionBank(@NotBlank @Size(max = 8) String id, @NotNull Quiz quiz, @NotNull Teacher teacher,

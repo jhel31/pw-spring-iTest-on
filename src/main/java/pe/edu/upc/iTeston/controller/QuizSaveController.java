@@ -1,10 +1,6 @@
 package pe.edu.upc.iTeston.controller;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.upc.iTeston.business.crud.ExerciseService;
 import pe.edu.upc.iTeston.business.crud.QuizSaveService;
 import pe.edu.upc.iTeston.business.crud.QuizService;
-import pe.edu.upc.iTeston.models.entities.Approval;
-import pe.edu.upc.iTeston.models.entities.Comment;
-import pe.edu.upc.iTeston.models.entities.QuestionBank;
 import pe.edu.upc.iTeston.models.entities.Quiz;
 import pe.edu.upc.iTeston.models.entities.QuizzSave;
 
@@ -54,19 +47,17 @@ public class QuizSaveController {
 	}
 
 	@PostMapping("/saveNew")
-	public String saveNew(Model model, @ModelAttribute("quizSave") QuizzSave quizSave, BindingResult result)
+	public String saveNew(Model model, @ModelAttribute("quizSave") QuizzSave quizSave, BindingResult result )
 			throws Exception {
 		quizSave.setDate(new Date());
-		quizSave.setResult(0);
-		quizSave.setResults(eS.newQuizResults("QU02")); //quitar el seteo
+		quizSave.setResult(0);		
 		for (int i = 0; i < quizSave.getResults().size(); i++) {
 			if (quizSave.getResults().get(i).getResult() == 1) {
 				quizSave.setResult(quizSave.getResult() + 2);
 			}
 		}
-		
 		qsS.create(quizSave);
-
+		
 		return "redirect:/quizSave";
 
 	}

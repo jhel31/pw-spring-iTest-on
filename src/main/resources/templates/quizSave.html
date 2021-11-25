@@ -21,11 +21,12 @@
 		<div class="row">
 				<form th:action="@{/quizSave/saveNew}" th:object="${quizSave}" method="post">
 					<div class="form-group">
-						<label for="idrace">ID:</label> <input type="text"
-							class="form-control" th:field="*{idQuizzSave}" readonly></input> <label
+						 <label
 							for="idrace">ID Quiz:</label> <input type="text"
 							class="form-control" th:field="*{quizz.id}" readonly></input>
-						
+						<label for="idrace">Nombre de Estudiante</label> <input type="text"
+							class="form-control" th:field="*{student.name}" readonly></input>
+							
 						<table class="table table-bordered table-hover table-striped"
 							id="tab_logic">
 							<thead>
@@ -37,6 +38,7 @@
 									<th class="text-center">4</th>
 									<th class="text-center">5</th>
 									<th class="text-center">Respuesta</th>
+<!-- 									<th class="text-center">Resultado</th> -->
 							</thead>
 							<tbody>
 								<tr th:each="r, itemStat: *{results}">
@@ -46,14 +48,26 @@
 									<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative2}"></td>
 									<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative3}"></td>
 									<td th:text="*{results[__${itemStat.index}__].exercise.wrongAlternative4}"></td>
-									<td th:text="*{results[__${itemStat.index}__].result}"></td>
+<!-- 									<td><select class="form-select" aria-label="Default select example"> -->
+<!--   										<option selected>Escoger</option> -->
+<!--   										<option value="1">1</option> -->
+<!--   										<option value="2">2</option> -->
+<!--   										<option value="3">3</option> -->
+<!--   										<option value="4">4</option> -->
+<!--   										<option value="5">5</option> -->
+<!-- 									</select></td> -->
+									<td>
+										<div class="col-xs-2">
+    									<input class="form-control" id="ex1" type="text" th:field="*{results[__${itemStat.index}__].result}">
+ 			 							</div>
+ 			 						</td>
 								</tr>
 							</tbody>
 			
 						</table>
 					</div>
 			
-					<button type="submit" class="btn btn-primary">Aceptar</button>
+					<button type="submit" class="btn btn-primary">Finalizar simulacro</button>
 			
 				</form>
 		</div>
@@ -62,16 +76,13 @@
       </div>
 
 	</div>
-	<footer th:replace="frag-footer">
-		<script src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script>
-		<script>
-	      window.dataLayer = window.dataLayer || [];
-	      function gtag(){dataLayer.push(arguments);}
-	      gtag('js', new Date());
-	      gtag('config', 'G-GNJJMF8KL8');
-	    </script>
-		<script src="@{/js/bootstrap.bundle.min.js}"></script>
-	</footer>
+<!-- 	<footer th:replace="frag-footer"> -->
+<!-- 		<script src="https://www.googletagmanager.com/gtag/js?id=G-GNJJMF8KL8"></script> -->
+<!-- 		<script> -->
+
+<!-- 	    </script> -->
+<!-- 		<script src="@{/js/bootstrap.bundle.min.js}"></script> -->
+<!-- 	</footer> -->
 
 </body>
 </html>

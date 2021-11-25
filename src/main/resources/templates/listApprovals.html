@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="dashboardTeacher :: frag-head(~{::title})">
+
+<title>aprobaciones de quiz</title>
+
+</head>
+<body>
+
+	<div th:replace="dashboardTeacher :: frag-sidebar"></div>
+	<!--side bar end-->
+
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="card" style="margin-top: 5rem;">
+					<h1>Mis aprobaciones</h1>
+				</div>
+			</div>
+
+			<!-- -->
+
+			<div class="row">
+				<div class="card">
+					<h5 class="card-header">aprobaciones</h5>
+					<div class="card-body">
+<!-- 					th:each ="" -->
+						<table class="table" >
+							<thead>
+								<tr>
+									<th scope="col">Codigo</th>
+									<th scope="col">Fecha</th>
+									<th scope="col">Aprobacion obtenida</th>
+									<th scope="col">estudiante</th>
+									<th scope="col">idQquizSave</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="a: ${approvals}">
+								
+									<td th:text="${a.id}"></td>
+									<td th:text="${a.approvalDate}"></td>
+									<td th:text="${a.approvalLevel}" ></td>
+									<td th:text="${a.student.id}" ></td>
+									<td th:text="${a.quizSave.idQuizzSave}" ></td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+	<footer th:replace="dashboardTeacher  :: frag-footer"></footer>
+</body>
+</html>

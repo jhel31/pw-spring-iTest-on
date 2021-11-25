@@ -10,5 +10,5 @@ import pe.edu.upc.iTeston.models.entities.Approval;
 @Repository
 public interface ApprovalRepository extends JpaRepository<Approval, String> {
 	List<Approval> findByApprovalLevel(Integer level) throws Exception;
-	
+	List<Approval>findByQuizSaveIdQuizzSave(int id);
 }

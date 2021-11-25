@@ -54,12 +54,8 @@ public class QuestionBank {
 
 	@OneToMany(mappedBy = "questionBank")
 	private List<Exercise> exercises;
-	
-	
-	@OneToMany(mappedBy = "questionBank")
-	private List<QuestionBank> questionBank;
 
-	public QuestionBank() {s
+	public QuestionBank() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -135,16 +131,6 @@ public class QuestionBank {
 	}
 
 
-	public List<Approval> getApprovals() {
-		return approvals;
-	}
-
-
-	public void setApprovals(List<Approval> approvals) {
-		this.approvals = approvals;
-	}
-	
-
 
 	public QuestionBank(@NotBlank @Size(max = 8) String id, @NotNull Quiz quiz, @NotNull Teacher teacher,
 			@Size(max = 100) String description, @Max(9999) @Min(1) Integer results,
@@ -157,7 +143,7 @@ public class QuestionBank {
 		this.results = results;
 		this.creationDate = creationDate;
 		this.exercises = exercises;
-		this.approvals = approvals;
+
 	}
 
 	

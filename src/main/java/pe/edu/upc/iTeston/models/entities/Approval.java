@@ -32,7 +32,7 @@ public class Approval {
 	@Column(name = "level_approval")
 	private Integer approvalLevel;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "id_student", nullable = true)
 	private Student student;
 

@@ -21,11 +21,12 @@
 		<div class="row">
 				<form th:action="@{/quizSave/saveNew}" th:object="${quizSave}" method="post">
 					<div class="form-group">
-						 <label
+						<label for="idrace">ID:</label> <input type="text"
+							class="form-control" th:field="*{idQuizzSave}" readonly></input> <label
 							for="idrace">ID Quiz:</label> <input type="text"
 							class="form-control" th:field="*{quizz.id}" readonly></input>
-						<label for="idrace">Nombre de Estudiante</label> <input type="text"
-							class="form-control" th:field="*{student.name}" readonly></input>
+						<label for="idrace">StudentID:</label> <input type="text"
+							class="form-control" th:field="*{student.id}" readonly></input>
 							
 						<table class="table table-bordered table-hover table-striped"
 							id="tab_logic">
@@ -67,7 +68,7 @@
 						</table>
 					</div>
 			
-					<button type="submit" class="btn btn-primary">Finalizar simulacro</button>
+					<button type="submit" class="btn btn-primary">Aceptar</button>
 			
 				</form>
 		</div>

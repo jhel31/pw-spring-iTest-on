@@ -30,19 +30,17 @@
 								<tr>
 									<th scope="col">Codigo</th>
 									<th scope="col">Nota</th>
-									<th scope="col">IdQuiz</th>
-									<th scope="col">Fecha</th>
-									<th scope="col">Comentario</th>
+									<th scope="col">Universidad</th>
+									<th scope="col">Subcripci&oacuten</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="qs: ${quizesSave}">
+								<tr th:each="quiz: ${quizes}">
 								
-									<td th:text="${qs.idQuizzSave}"></td>
-									<td th:text="${qs.result}"></td>
-									<td th:text="${qs.quizz.id}" ></td>
-									<td th:text="${qs.date}" ></td>
-									<td ><a th:href="@{'/quizSave/newComment/'+ ${qs.idQuizzSave}}">+</a></td>
+									<td th:text="${quiz.id}"></td>
+									<td th:text="${quiz.nota}"></td>
+									<td th:text="${quiz.university.name}" ></td>
+									<td th:text="${quiz.subscription.id}" ></td>
 								</tr>
 								
 							</tbody>

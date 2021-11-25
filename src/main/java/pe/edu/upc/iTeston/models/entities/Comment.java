@@ -42,8 +42,22 @@ public class Comment {
 	private Student student;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_quizSave", nullable = true)
-	private QuizzSave quizSave;
+	@JoinColumn(name = "id_question_bank", nullable = true)
+	private QuestionBank questionBank;
+
+	public Comment(String id, String description, Date date, Student student, QuestionBank questionBank) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.date = date;
+		this.student = student;
+		this.questionBank = questionBank;
+	}
+
+	public Comment() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getId() {
 		return id;
@@ -69,6 +83,11 @@ public class Comment {
 		this.date = date;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(date, description, id, questionBank, student);
+	}
+
 	public Student getStudent() {
 		return student;
 	}
@@ -77,31 +96,28 @@ public class Comment {
 		this.student = student;
 	}
 
-	public QuizzSave getQuizSave() {
-		return quizSave;
+	public QuestionBank getQuestionBank() {
+		return questionBank;
 	}
 
-	public void setQuizSave(QuizzSave quizSave) {
-		this.quizSave = quizSave;
+	public void setQuestionBank(QuestionBank questionBank) {
+		this.questionBank = questionBank;
 	}
 
-	public Comment(@NotNull @NotBlank @Size(max = 20) String id,
-			@NotNull @NotBlank @Size(max = 1000) String description, Date date, Student student, QuizzSave quizSave) {
-		super();
-		this.id = id;
-		this.description = description;
-		this.date = date;
-		this.student = student;
-		this.quizSave = quizSave;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Comment other = (Comment) obj;
+		return Objects.equals(date, other.date) && Objects.equals(description, other.description)
+				&& Objects.equals(id, other.id) && Objects.equals(questionBank, other.questionBank)
+				&& Objects.equals(student, other.student);
 	}
 
-	public Comment() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-
-	
 
 
 }

@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface QuestionBankRepository extends JpaRepository<QuestionBank, String> {
 		List<QuestionBank> findByQuizUniversityId(String id);
-		List<QuestionBank> findByTeacherId(String id);
 }

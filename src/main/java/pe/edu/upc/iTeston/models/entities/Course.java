@@ -70,10 +70,10 @@ public class Course {
 		this.teachers = teachers;
 	}
 
-//	@Override
-//	public int hashCode() {
-//		return Objects.hash(id, name, teachers);
-//	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, teachers);
+	}
 
 	@Override
 	public boolean equals(Object obj) {

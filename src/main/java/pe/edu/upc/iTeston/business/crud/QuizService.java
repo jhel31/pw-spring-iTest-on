@@ -7,5 +7,4 @@ import pe.edu.upc.iTeston.models.entities.Quiz;
 public interface QuizService extends CrudService<Quiz, String>{
 	List<Quiz> findByUniversityId(String id) throws Exception;
 	List<Quiz> findBySubscriptionStudentId(String id) throws Exception;
-	
 }

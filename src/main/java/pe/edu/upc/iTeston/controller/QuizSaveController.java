@@ -35,7 +35,7 @@ public class QuizSaveController {
 	private QuizService qS;
 
 	@Autowired
-	private QuizSaveService quizSaveServise;
+	private QuizSaveService qsS;
 
 	@Autowired
 	private LoginService loginService;
@@ -49,7 +49,7 @@ public class QuizSaveController {
 	@GetMapping("/misnotas")
 	public String list(Model model) {
 		try {
-			List<QuizzSave> quizesSave = quizSaveServise.findByStudentId(loginService.getStudent().getId());
+			List<QuizzSave> quizesSave = qsS.findByStudentId(loginService.getStudent().getId());
 			model.addAttribute("quizesSave", quizesSave);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -94,7 +94,7 @@ public class QuizSaveController {
 				quizSave.setResult(quizSave.getResult() + 2);
 			}
 		}
-		quizSaveServise.create(quizSave);
+		qsS.create(quizSave);
 
 		return "redirect:/quizSave/misnotas";
 
@@ -147,7 +147,7 @@ public class QuizSaveController {
 	@GetMapping("/misQuizes")
 	public String misQuizes(Model model) {
 		try {
-			List<QuizzSave> quizesSave = quizSaveServise.findByTeacherId(loginService.getTeacher().getId());
+			List<QuizzSave> quizesSave = qsS.findByTeacherId(loginService.getTeacher().getId());
 			model.addAttribute("quizesSave", quizesSave);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

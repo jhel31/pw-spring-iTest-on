@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, String> {
 	List<Comment> findByDescription(String description) throws Exception;
+	List<Comment>findByQuizSaveIdQuizzSave(int id);
 }

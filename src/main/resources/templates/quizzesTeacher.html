@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="dashboardStudent :: frag-head(~{::title})">
+<head th:replace="dashboardTeacher :: frag-head(~{::title})">
 
 <title>Tus notas</title>
 
 </head>
 <body>
 
-	<div th:replace="dashboardStudent :: frag-sidebar"></div>
+	<div th:replace="dashboardTeacher :: frag-sidebar"></div>
 	<!--side bar end-->
 
 	<div class="content">
 		<div class="container">
 			<div class="row">
 				<div class="card" style="margin-top: 5rem;">
-					<h1>Tus notas</h1>
+					<h1>Mis balotarios</h1>
 				</div>
 			</div>
 
@@ -22,7 +22,7 @@
 
 			<div class="row">
 				<div class="card">
-					<h5 class="card-header">Resultado de simulacros pasados</h5>
+					<h5 class="card-header">Resultado de balotarios creados</h5>
 					<div class="card-body">
 <!-- 					th:each ="" -->
 						<table class="table" >
@@ -32,7 +32,8 @@
 									<th scope="col">Nota</th>
 									<th scope="col">IdQuiz</th>
 									<th scope="col">Fecha</th>
-									<th scope="col">Comentario</th>
+									<th scope="col">Alumno</th>
+									<th scope="col">Ver comentarios</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -42,7 +43,8 @@
 									<td th:text="${qs.result}"></td>
 									<td th:text="${qs.quizz.id}" ></td>
 									<td th:text="${qs.date}" ></td>
-									<td ><a th:href="@{'/quizSave/newComment/'+ ${qs.idQuizzSave}}">+</a></td>
+									<td th:text="${qs.student.id}" ></td>
+									<td ><a th:href="@{'/quizSave/listComments/'+ ${qs.idQuizzSave}}">ver</a></td>
 								</tr>
 								
 							</tbody>
@@ -54,6 +56,6 @@
 
 		</div>
 	</div>
-	<footer th:replace="dashboardStudent  :: frag-footer"></footer>
+	<footer th:replace="dashboardTeacher  :: frag-footer"></footer>
 </body>
 </html>

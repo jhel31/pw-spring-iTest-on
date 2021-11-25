@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="frag-head(title)">
 
 	<meta charset="utf-8">
@@ -25,21 +26,19 @@
 				<h3 class="logoTopLeft">iTest-on</h3>
 			</div>
 			<div class="right_area">
-				<a th:href="@{/logout}" class="btn btn-dark logout_btn"><i
-					class="fas fa-sign-in-alt"></i> Log-out</a>
+				<a th:href="@{/logout}" class="btn btn-dark logout_btn"><i class="fas fa-sign-in-alt"></i> Log-out</a>
 			</div>
 		</header>
 		<!--header area end-->
 		<!--sidebar start-->
 		<div class="sidebar">
-			<center>
+			<div>
 				<img src="/images/logodark.png" class="logo" alt="">
-			</center>
+			</div>
 			<a th:href="@{/inicio-estudiante}"><i class="fas fa-desktop"></i><span>Inicio</span></a> 
-			<a th:href="@{/perfil-estudiante}"><i class="fas fa-user"></i><span>Perfil</span></a> 
-			<a th:href="@{/careers/simulacro}"><i class="fas fa-book"></i><span>Simulacros</span></a> 
-			<a th:href="@{/quizzes/misnotas}"><i class="fas fa-folder"></i><span>Mis notas</span></a>
-			<a th:href="@{/premium}"><i class="fas fa-star"></i><span>Obtener Premium</span></a>
+            <a th:href="@{/careers/simulacro}"><i class="fas fa-book"></i><span>Simulacros</span></a> 
+            <a th:href="@{/quizSave/misnotas}"><i class="fas fa-folder"></i><span>Mis notas</span></a>
+            <a th:href="@{/premium}"><i class="fas fa-star"></i><span>Obtener Premium</span></a>
 		</div>
 	
 	</div>

@@ -2,7 +2,6 @@ package pe.edu.upc.iTeston.models.entities;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,16 +58,96 @@ public class QuestionBank {
 	@OneToMany(mappedBy = "questionBank")
 	private List<Approval> approvals;
 
-	@OneToMany(mappedBy = "questionBank")
-	private List<Comment> comments;
 
 	public QuestionBank() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public QuestionBank(String id, Quiz quiz, Teacher teacher, String description, Integer results, Date creationDate,
-			List<Exercise> exercises, List<Approval> approvals, List<Comment> comments) {
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public Quiz getQuiz() {
+		return quiz;
+	}
+
+
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
+	}
+
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public Integer getResults() {
+		return results;
+	}
+
+
+	public void setResults(Integer results) {
+		this.results = results;
+	}
+
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+
+	public List<Exercise> getExercises() {
+		return exercises;
+	}
+
+
+	public void setExercises(List<Exercise> exercises) {
+		this.exercises = exercises;
+	}
+
+
+	public List<Approval> getApprovals() {
+		return approvals;
+	}
+
+
+	public void setApprovals(List<Approval> approvals) {
+		this.approvals = approvals;
+	}
+
+
+	public QuestionBank(@NotBlank @Size(max = 8) String id, @NotNull Quiz quiz, @NotNull Teacher teacher,
+			@Size(max = 100) String description, @Max(9999) @Min(1) Integer results,
+			@NotNull @NotBlank Date creationDate, List<Exercise> exercises, List<Approval> approvals) {
 		super();
 		this.id = id;
 		this.quiz = quiz;
@@ -78,130 +157,8 @@ public class QuestionBank {
 		this.creationDate = creationDate;
 		this.exercises = exercises;
 		this.approvals = approvals;
-		this.comments = comments;
 	}
-	
-	public Integer getQuantityExercise(){//Cantidad de ejercicios
-
-		return exercises.size();
-	}
-	
-	
-	public float getPromApprovals() {
-		int suma=0;
-		float promedio=0;
-		for(int i=0; i<approvals.size(); i++) {//propiedad de cantidad de aprobaciÃ³n, recorre datos
-			suma+=approvals.get(i).getApprovalLevel();
-			promedio=(suma/approvals.size());
-		}
-		return promedio;
-	}
-	
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public Quiz getQuiz() {
-		return quiz;
-	}
-
-	public void setQuiz(Quiz quiz) {
-		this.quiz = quiz;
-	}
-
-	public Teacher getTeacher() {
-		return teacher;
-	}
-
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getResults() {
-		return results;
-	}
-
-	public void setResults(Integer results) {
-		this.results = results;
-	}
-
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public List<Exercise> getExercises() {
-		return exercises;
-	}
-
-	public void setExercises(List<Exercise> exercises) {
-		this.exercises = exercises;
-	
-	}
-	public List<Approval> getApprovals() {
-		return approvals;
-	}
-
-	public void setApprovals(List<Approval> approvals) {
-		this.approvals = approvals;
-	}
-
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
-	
-	
-	
-	
-	
 
 	
-	
-	
-	
-	
-	
-	
-	
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(approvals, comments, creationDate, description, exercises, id, quiz, results, teacher);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		QuestionBank other = (QuestionBank) obj;
-		return Objects.equals(approvals, other.approvals) && Objects.equals(comments, other.comments)
-				&& Objects.equals(creationDate, other.creationDate) && Objects.equals(description, other.description)
-				&& Objects.equals(exercises, other.exercises) && Objects.equals(id, other.id)
-				&& Objects.equals(quiz, other.quiz) && Objects.equals(results, other.results)
-				&& Objects.equals(teacher, other.teacher);
-	}
 
 }

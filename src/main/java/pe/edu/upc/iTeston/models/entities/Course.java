@@ -69,12 +69,12 @@ public class Course {
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
 	}
-/*
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, name, teachers);
-	}
-*/
+
+//	@Override
+//	public int hashCode() {
+//		return Objects.hash(id, name, teachers);
+//	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

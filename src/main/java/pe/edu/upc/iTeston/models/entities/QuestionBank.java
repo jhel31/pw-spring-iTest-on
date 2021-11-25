@@ -55,9 +55,6 @@ public class QuestionBank {
 	@OneToMany(mappedBy = "questionBank")
 	private List<Exercise> exercises;
 
-	@OneToMany(mappedBy = "questionBank")
-	private List<Approval> approvals;
-
 
 	public QuestionBank() {
 		super();
@@ -135,19 +132,9 @@ public class QuestionBank {
 	}
 
 
-	public List<Approval> getApprovals() {
-		return approvals;
-	}
-
-
-	public void setApprovals(List<Approval> approvals) {
-		this.approvals = approvals;
-	}
-
-
 	public QuestionBank(@NotBlank @Size(max = 8) String id, @NotNull Quiz quiz, @NotNull Teacher teacher,
 			@Size(max = 100) String description, @Max(9999) @Min(1) Integer results,
-			@NotNull @NotBlank Date creationDate, List<Exercise> exercises, List<Approval> approvals) {
+			@NotNull @NotBlank Date creationDate, List<Exercise> exercises) {
 		super();
 		this.id = id;
 		this.quiz = quiz;
@@ -156,9 +143,7 @@ public class QuestionBank {
 		this.results = results;
 		this.creationDate = creationDate;
 		this.exercises = exercises;
-		this.approvals = approvals;
 	}
 
-	
 
 }

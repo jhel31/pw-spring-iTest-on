@@ -1,7 +1,6 @@
 package pe.edu.upc.iTeston.models.entities;
 
 import java.util.Date;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,8 +37,8 @@ public class Approval {
 	private Student student;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_question_bank", nullable = true)
-	private QuestionBank questionBank;
+	@JoinColumn(name = "id_quizSave", nullable = true)
+	private QuizzSave quizSave;
 
 	@Column(name = "date_approval")
 	@Temporal(TemporalType.DATE)
@@ -48,15 +47,6 @@ public class Approval {
 	public Approval() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public Approval(String id, Student student, QuestionBank questionBank, Integer approvalLevel, Date approvalDate) {
-		super();
-		this.id = id;
-		this.student = student;
-		this.questionBank = questionBank;
-		this.approvalLevel = approvalLevel;
-		this.approvalDate = approvalDate;
 	}
 
 	public String getId() {
@@ -75,15 +65,6 @@ public class Approval {
 		this.approvalLevel = approvalLevel;
 	}
 
-	public Date getApprovalDate() {
-		return approvalDate;
-	}
-
-	public void setApprovalDate(Date approvalDate) {
-		this.approvalDate = approvalDate;
-	}
-	
-
 	public Student getStudent() {
 		return student;
 	}
@@ -92,32 +73,32 @@ public class Approval {
 		this.student = student;
 	}
 
-	public QuestionBank getQuestionBank() {
-		return questionBank;
+	public QuizzSave getQuizSave() {
+		return quizSave;
 	}
 
-	public void setQuestionBank(QuestionBank questionBank) {
-		this.questionBank = questionBank;
+	public void setQuizSave(QuizzSave quizSave) {
+		this.quizSave = quizSave;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(approvalDate, approvalLevel, id, questionBank, student);
+	public Date getApprovalDate() {
+		return approvalDate;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Approval other = (Approval) obj;
-		return Objects.equals(approvalDate, other.approvalDate) && Objects.equals(approvalLevel, other.approvalLevel)
-				&& Objects.equals(id, other.id) && Objects.equals(questionBank, other.questionBank)
-				&& Objects.equals(student, other.student);
+	public void setApprovalDate(Date approvalDate) {
+		this.approvalDate = approvalDate;
 	}
+
+	public Approval(@NotNull @NotBlank @Size(max = 20) String id, @Max(5) @Min(0) Integer approvalLevel,
+			Student student, QuizzSave quizSave, Date approvalDate) {
+		super();
+		this.id = id;
+		this.approvalLevel = approvalLevel;
+		this.student = student;
+		this.quizSave = quizSave;
+		this.approvalDate = approvalDate;
+	}
+
 
 
 

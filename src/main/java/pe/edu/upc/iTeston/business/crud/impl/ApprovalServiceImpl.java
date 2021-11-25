@@ -28,4 +28,10 @@ public class ApprovalServiceImpl implements ApprovalService {
 		return approvalRepository.findByApprovalLevel(level);
 	}
 
+	@Override
+	public List<Approval> findByQuizSaveIdQuizzSave(int id) {
+		// TODO Auto-generated method stub
+		return approvalRepository.findByQuizSaveIdQuizzSave(id);
+	}
+
 }

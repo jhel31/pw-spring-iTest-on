@@ -27,7 +27,7 @@ public class InitUser implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 	BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
-	/*Optional<Student> optional = studentRepository.findById("ST01");
+		Optional<Student> optional = studentRepository.findById("ST01");
 		if(optional.isPresent()) {
 			Student student = optional.get();
 			User user = new User("april", bcpe.encode("april"), student);	
@@ -40,7 +40,7 @@ public class InitUser implements CommandLineRunner{
 			User user = new User("pedro", bcpe.encode("pedro"),teacher);	
 			user.addAuthority("ROLE_TEACHER");
 			userRepository.save(user);
-		}*/
+		}
 	}
 
 }

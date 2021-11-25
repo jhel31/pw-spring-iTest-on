@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pe.edu.upc.iTeston.business.crud.ApprovalService;
 import pe.edu.upc.iTeston.business.crud.CommentService;
 import pe.edu.upc.iTeston.business.crud.ExerciseService;
 import pe.edu.upc.iTeston.business.crud.QuizSaveService;
 import pe.edu.upc.iTeston.business.crud.QuizService;
 import pe.edu.upc.iTeston.business.crud.impl.LoginService;
+import pe.edu.upc.iTeston.models.entities.Approval;
 import pe.edu.upc.iTeston.models.entities.Comment;
 import pe.edu.upc.iTeston.models.entities.Quiz;
 import pe.edu.upc.iTeston.models.entities.QuizzSave;
-import pe.edu.upc.iTeston.models.entities.Student;
 
 @Controller
 @RequestMapping("/quizSave")
@@ -34,18 +35,21 @@ public class QuizSaveController {
 	private QuizService qS;
 
 	@Autowired
-	private QuizSaveService qsS;
+	private QuizSaveService quizSaveServise;
 
 	@Autowired
 	private LoginService loginService;
 
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private ApprovalService approvalService;
 
 	@GetMapping("/misnotas")
 	public String list(Model model) {
 		try {
-			List<QuizzSave> quizesSave = qsS.findByStudentId(loginService.getStudent().getId());
+			List<QuizzSave> quizesSave = quizSaveServise.findByStudentId(loginService.getStudent().getId());
 			model.addAttribute("quizesSave", quizesSave);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -90,12 +94,37 @@ public class QuizSaveController {
 				quizSave.setResult(quizSave.getResult() + 2);
 			}
 		}
-		qsS.create(quizSave);
+		quizSaveServise.create(quizSave);
 
 		return "redirect:/quizSave/misnotas";
 
 	}
 
+	
+	@PostMapping("/saveApproval")
+	public String saveAproval(Model model, @ModelAttribute("approval") Approval approval, BindingResult result)
+			throws Exception {
+		approval.setApprovalDate(new Date());
+		approvalService.create(approval);
+		return "redirect:/quizSave/misnotas";
+
+	}
+	@GetMapping("/newApproval/{idQuizzSave}")
+	public String newApproval(Model model, @PathVariable int idQuizzSave) {
+		Approval approval = new Approval();
+		approval.setQuizSave(new QuizzSave());
+		approval.getQuizSave().setIdQuizzSave(idQuizzSave);
+		approval.setStudent(loginService.getStudent());
+		model.addAttribute("approval", approval);
+		return "approval";
+	}
+	@GetMapping("/listApprovals/{idQuizzSave}")
+	public String listApprovals(Model model, @PathVariable int idQuizzSave) {
+		List<Approval>approvals = approvalService.findByQuizSaveIdQuizzSave(idQuizzSave);
+		model.addAttribute("approvals", approvals);
+		return "listApprovals";
+	}
+	
 	@PostMapping("/saveComment")
 	public String saveComment(Model model, @ModelAttribute("comment") Comment comment, BindingResult result)
 			throws Exception {
@@ -118,7 +147,7 @@ public class QuizSaveController {
 	@GetMapping("/misQuizes")
 	public String misQuizes(Model model) {
 		try {
-			List<QuizzSave> quizesSave = qsS.findByTeacherId(loginService.getTeacher().getId());
+			List<QuizzSave> quizesSave = quizSaveServise.findByTeacherId(loginService.getTeacher().getId());
 			model.addAttribute("quizesSave", quizesSave);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

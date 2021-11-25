@@ -1,7 +1,6 @@
 package pe.edu.upc.iTeston.models.entities;
 
 import java.util.Date;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

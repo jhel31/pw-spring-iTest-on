@@ -33,6 +33,7 @@
 									<th scope="col">IdQuiz</th>
 									<th scope="col">Fecha</th>
 									<th scope="col">Comentario</th>
+									<th scope="col">aprobaciones</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -43,6 +44,7 @@
 									<td th:text="${qs.quizz.id}" ></td>
 									<td th:text="${qs.date}" ></td>
 									<td ><a th:href="@{'/quizSave/newComment/'+ ${qs.idQuizzSave}}">+</a></td>
+									<td ><a th:href="@{'/quizSave/newApproval/'+ ${qs.idQuizzSave}}">+</a></td>
 								</tr>
 								
 							</tbody>

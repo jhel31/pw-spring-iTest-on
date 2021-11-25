@@ -3,7 +3,7 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="dashboardStudent :: frag-head(~{::title})">
 
-<title>Ingrese comentario</title>
+<title>Ingrese approvals</title>
 
 </head>
 <body>
@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="card" style="margin-top: 5rem;">
-					<h1>Ingrese comentario del quiz realizado</h1>
+					<h1>Ingrese approvals</h1>
 				</div>
 			</div>
 
@@ -28,16 +28,16 @@
 						<div class="row">
 							<div class="card text-dark bg-light mb-3">
 								<div class="card-body">
-									<form th:action="@{/quizSave/saveComment}"
-										th:object="${comment}" method="post">
+									<form th:action="@{/quizSave/saveApproval}"
+										th:object="${approval}" method="post">
 										<div class="mb-3">
 											<label for="id" class="form-label">Id</label> <input
 												type="text"  class="form-control" th:field="*{id}">
 										</div>
 										<div class="mb-3">
-											<label for="description" class="form-label">description</label>
+											<label for="description" class="form-label">Nivel de aprobacion(1-5)</label>
 											<input type="text" class="form-control"
-												th:field="*{description}">
+												th:field="*{approvalLevel}">
 										</div>
 										<div class="mb-3">
 											<label for="simulacro" class="form-label">Quiz</label> <input

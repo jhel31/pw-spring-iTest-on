@@ -158,3 +158,18 @@ text-align: center;
 
 color: #0070C0;
 }
+
+/* Bootstrap default changes */
+
+.content h1,h2,h5{
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: bold;
+	color: #0E1C36;
+}
+
+.btn{
+	font-family: Poppins;
+	border-radius: 5.5px;
+	
+}

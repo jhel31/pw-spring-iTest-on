@@ -3,7 +3,7 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="dashboardStudent :: frag-head(~{::title})">
 
-<title>Ingrese approvals</title>
+<title>Ingrese aprobacion</title>
 
 </head>
 <body>
@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="card" style="margin-top: 5rem;">
-					<h1>Ingrese approvals</h1>
+					<h1>Ingrese aprobacion</h1>
 				</div>
 			</div>
 
@@ -35,22 +35,22 @@
 												type="text"  class="form-control" th:field="*{id}">
 										</div>
 										<div class="mb-3">
-											<label for="description" class="form-label">Nivel de aprobacion(1-5)</label>
+											<label for="description" class="form-label">Cual considerarias que es el nivel de aprobacion del quiz(1-5)?</label>
 											<input type="text" class="form-control"
 												th:field="*{approvalLevel}">
 										</div>
 										<div class="mb-3">
-											<label for="simulacro" class="form-label">Quiz</label> <input
+											<label for="simulacro" class="form-label">Para el quiz</label> <input
 												th:field="*{quizSave.idQuizzSave}" type="text" readonly="readonly"
 												class="form-control">
 										</div>
 										
 										<div class="mb-3">
-											<label for="simulacro" class="form-label">Student</label> <input
+											<label for="simulacro" class="form-label">Eres el estudiante</label> <input
 												th:field="*{student.id}" type="text" readonly="readonly"
 												class="form-control">
 										</div>
-										<button type="submit" class="btn btn-success">Save</button>
+										<button type="submit" class="btn btn-success">Guardar</button>
 									</form>
 								</div>
 

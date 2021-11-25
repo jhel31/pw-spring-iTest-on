@@ -31,26 +31,26 @@
 									<form th:action="@{/quizSave/saveComment}"
 										th:object="${comment}" method="post">
 										<div class="mb-3">
-											<label for="id" class="form-label">Id</label> <input
+											<label for="id" class="form-label">Id de Comentario</label> <input
 												type="text"  class="form-control" th:field="*{id}">
 										</div>
 										<div class="mb-3">
-											<label for="description" class="form-label">description</label>
+											<label for="description" class="form-label">Tuviste algun error o problema? Dejanos saberlo</label>
 											<input type="text" class="form-control"
 												th:field="*{description}">
 										</div>
 										<div class="mb-3">
-											<label for="simulacro" class="form-label">Quiz</label> <input
+											<label for="simulacro" class="form-label">Pertenece al Quiz</label> <input
 												th:field="*{quizSave.idQuizzSave}" type="text" readonly="readonly"
 												class="form-control">
 										</div>
 										
 										<div class="mb-3">
-											<label for="simulacro" class="form-label">Student</label> <input
+											<label for="simulacro" class="form-label">Eres el estudiante</label> <input
 												th:field="*{student.id}" type="text" readonly="readonly"
 												class="form-control">
 										</div>
-										<button type="submit" class="btn btn-success">Save</button>
+										<button type="submit" class="btn btn-success">Enviar comentario</button>
 									</form>
 								</div>
 

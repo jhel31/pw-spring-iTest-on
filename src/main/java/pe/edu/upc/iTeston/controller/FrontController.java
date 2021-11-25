@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.upc.iTeston.business.crud.QuestionBankService;
 import pe.edu.upc.iTeston.business.crud.impl.LoginService;
 import pe.edu.upc.iTeston.models.entities.QuestionBank;
-import pe.edu.upc.iTeston.models.entities.Teacher;
 
 @Controller
 @RequestMapping("/")

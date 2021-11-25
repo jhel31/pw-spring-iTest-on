@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="dashboardTeacher :: frag-head(~{::title})">
 
-<title>Tus notas</title>
+<title>aprobaciones de quiz</title>
 
 </head>
 <body>
@@ -14,7 +14,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="card" style="margin-top: 5rem;">
-					<h1>Mis balotarios</h1>
+					<h1>Mis aprobaciones</h1>
 				</div>
 			</div>
 
@@ -22,36 +22,33 @@
 
 			<div class="row">
 				<div class="card">
-					<h5 class="card-header">Resultado de balotarios creados</h5>
+					<h5 class="card-header">aprobaciones</h5>
 					<div class="card-body">
 <!-- 					th:each ="" -->
 						<table class="table" >
 							<thead>
 								<tr>
 									<th scope="col">Codigo</th>
-									<th scope="col">Nota</th>
-									<th scope="col">IdQuiz</th>
 									<th scope="col">Fecha</th>
-									<th scope="col">Alumno</th>
-									<th scope="col">Ver comentarios</th>
-									<th scope="col">Ver aprobaciones</th>
+									<th scope="col">Aprobacion obtenida</th>
+									<th scope="col">estudiante</th>
+									<th scope="col">idQquizSave</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="qs: ${quizesSave}">
+								<tr th:each="a: ${approvals}">
 								
-									<td th:text="${qs.idQuizzSave}"></td>
-									<td th:text="${qs.result}"></td>
-									<td th:text="${qs.quizz.id}" ></td>
-									<td th:text="${qs.date}" ></td>
-									<td th:text="${qs.student.id}" ></td>
-									<td ><a th:href="@{'/quizSave/listComments/'+ ${qs.idQuizzSave}}">ver</a></td>
-									<td ><a th:href="@{'/quizSave/listApprovals/'+ ${qs.idQuizzSave}}">ver</a></td>
+									<td th:text="${a.id}"></td>
+									<td th:text="${a.approvalDate}"></td>
+									<td th:text="${a.approvalLevel}" ></td>
+									<td th:text="${a.student.id}" ></td>
+									<td th:text="${a.quizSave.idQuizzSave}" ></td>
 								</tr>
 								
 							</tbody>
 						</table>
 					</div>
+					
 				</div>
 			</div>
 

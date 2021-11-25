@@ -54,12 +54,12 @@ public class QuestionBank {
 
 	@OneToMany(mappedBy = "questionBank")
 	private List<Exercise> exercises;
-
+	
+	
 	@OneToMany(mappedBy = "questionBank")
-	private List<Approval> approvals;
+	private List<QuestionBank> questionBank;
 
-
-	public QuestionBank() {
+	public QuestionBank() {s
 		super();
 		// TODO Auto-generated constructor stub
 	}

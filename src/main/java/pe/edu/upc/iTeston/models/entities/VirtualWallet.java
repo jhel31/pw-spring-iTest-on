@@ -23,10 +23,8 @@ public class VirtualWallet {
 	@Column(name = "id_virtual_wallet", length = 10, nullable = false)
 	private String id;
 	
-	@NotNull
-	@NotBlank
-	@Size(max = 10)
-	@Column(name = "saldo", length = 10, nullable = false)
+
+	@Column(name = "saldo", nullable = false)
 	private Float saldo;
 	
 	@OneToOne(mappedBy= "virtualWallet" )

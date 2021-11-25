@@ -13,15 +13,22 @@ import pe.edu.upc.iTeston.models.repository.CommentRepository;
 public class CommentServiceImpl implements CommentService {
 	@Autowired
 	private CommentRepository commentRepository;
+
 	@Override
 	public JpaRepository<Comment, String> getJpaRepository() {
-		
+
 		return commentRepository;
 	}
-	
+
 	@Override
-	public List<Comment> findByDescription(String description) throws Exception{
+	public List<Comment> findByDescription(String description) throws Exception {
 		return commentRepository.findByDescription(description);
 	}
-	
+
+	@Override
+	public List<Comment> findByQuizSaveIdQuizzSave(int id) {
+
+		return commentRepository.findByQuizSaveIdQuizzSave(id);
+	}
+
 }

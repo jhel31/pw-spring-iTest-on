@@ -33,18 +33,18 @@
 						</div>
 					</div>
 						<div class="align-self-center" >
-							<form  th:object="${walletRetiro}" method="post">
+							<form  th:action="@{/virtualWallets/edit}" th:object="${walletRetiro}" method="post">
 								<div class="mb-3" style="width: 100px">
 									<label for="formControlInput" class="form-label"></label> 
 										
-									<input  type="text" class="form-control" aria-label="Sizing example input" 
+									<input  type="text" class="form-control" aria-label="Sizing example input"
+									th:field = "*{saldo}" 
 									aria-describedby="inputGroup-sizing-default" >
 								</div>
+								<button type="submit" class="btn btn-success">Retirar</button>
 							</form>
 						</div>
-						<div class="align-self-center">
-							<a class="btn btn-primary" style="width: 100px;">retirar</a>
-						</div>
+					
 				</div>
 
 

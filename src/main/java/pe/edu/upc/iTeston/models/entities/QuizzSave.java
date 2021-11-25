@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
@@ -24,16 +25,21 @@ public class QuizzSave {
 	@OneToOne
 	private Quiz quizz;
 	
+	@ManyToOne
+	private Student student;
+	
+	
 	@Transient
 	List<ResultExercise> results;
 
-	public QuizzSave(int idQuizzSave, int result, Date date, Quiz quizz, List<ResultExercise> results) {
+	public QuizzSave( Student student, int idQuizzSave, int result, Date date, Quiz quizz, List<ResultExercise> results) {
 		super();
 		this.idQuizzSave = idQuizzSave;
 		this.result = result;
 		this.date = date;
 		this.quizz = quizz;
 		this.results = results;
+		this.student =  student;
 	}
 
 	public QuizzSave() {
@@ -79,6 +85,14 @@ public class QuizzSave {
 
 	public void setResults(List<ResultExercise> results) {
 		this.results = results;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 	
 	
